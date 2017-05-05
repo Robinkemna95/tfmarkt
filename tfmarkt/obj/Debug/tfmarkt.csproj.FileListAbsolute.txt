@@ -12,3 +12,7 @@ D:\Users\tayeb\Documents\Visual Studio 2012\Projects\tfmarkt\tfmarkt\obj\Debug\t
 D:\Users\tayeb\Documents\Visual Studio 2012\Projects\tfmarkt\tfmarkt\obj\Debug\tfmarkt.exe
 D:\Users\tayeb\Documents\Visual Studio 2012\Projects\tfmarkt\tfmarkt\obj\Debug\tfmarkt.pdb
 D:\Users\tayeb\Documents\Visual Studio 2012\Projects\tfmarkt\tfmarkt\obj\Debug\tfmarkt.csprojResolveAssemblyReference.cache
+D:\Users\tayeb\documents\visual studio 2012\Projects\tfmarkt\tfmarkt\bin\Debug\tfmarkt.exe.manifest
+D:\Users\tayeb\documents\visual studio 2012\Projects\tfmarkt\tfmarkt\bin\Debug\tfmarkt.application
+D:\Users\tayeb\documents\visual studio 2012\Projects\tfmarkt\tfmarkt\obj\Debug\tfmarkt.exe.manifest
+D:\Users\tayeb\documents\visual studio 2012\Projects\tfmarkt\tfmarkt\obj\Debug\tfmarkt.application
