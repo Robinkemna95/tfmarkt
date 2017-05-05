@@ -8,5 +8,6 @@ namespace tfmarkt.Produktklassen
 {
     class TestklasseRobin
     {
+        private int a;
     }
 }
