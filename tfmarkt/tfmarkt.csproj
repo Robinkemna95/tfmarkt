@@ -89,8 +89,6 @@
     <Compile Include="Produktklassen\Fugenmoertel.cs" />
     <Compile Include="Produktklassen\Tapetenkleister.cs" />
     <Compile Include="Produktklassen\Tapetenrolle.cs" />
-    <Compile Include="Produktklassen\Testklasse.cs" />
-    <Compile Include="Produktklassen\TestklasseRobin.cs" />
     <Compile Include="Produktklassen\Zusatzprodukt.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
