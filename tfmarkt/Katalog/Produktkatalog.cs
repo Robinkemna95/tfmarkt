@@ -191,6 +191,18 @@ namespace tfmarkt.Katalog
             return erfolgreich;
         }
 
+        // Ruft den Ladevorgang für den Produktkatalog auf
+        public void ladeProduktdaten()
+        {
+            this.datenhandler.fuelleProduktkatalog(this);
+        }
+
+        // Ruft den Speichervorgang für den Produktkatalog auf
+        public void sichereProduktdaten()
+        {
+            this.datenhandler.sichereProduktkatalog(this);
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(100);
