@@ -77,7 +77,6 @@ namespace tfmarkt.Daten
 
             Type tyTapeten = pdKatalog.tapeten.GetType();
             Type tyFliesen = pdKatalog.fliesen.GetType();
-            Type tyZusatzprodukte;
 
             // Einlesen der Tapeten XML Datei
             if (File.Exists(this.xmlVerzeichnis + "/" + dateiTapeten))

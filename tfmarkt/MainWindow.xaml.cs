@@ -41,6 +41,7 @@ namespace tfmarkt
             // Produktkatalog laden TEST
             k.datenhandler.fuelleProduktkatalog(k);
 
+            Testklasse te = new Testklasse();
             // Tapetenrolle t2 = (Tapetenrolle)t1.Clone();
 
             //k.addFliese(t2);
