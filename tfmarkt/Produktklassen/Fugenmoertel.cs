@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    class Fugenmoertel : Zusatzprodukt
+    // Klasse Fugenmoertel definiert was Fugenmoertel ist und was sie alles kann
+    // Fugenmoertel erbt Eigenschaften von der Klasse Zusatzprodukt
+    public class Fugenmoertel : Zusatzprodukt
     {
         // Klassen Member der Klasse Fuegenmoertel
         public int minFlaeche { get; set; }
         public int maxFlaeche { get; set; }
+
+        public Fugenmoertel()
+        { 
+        }
 
          // Konstruktor der Klasse Tapetenkleister
         public Fugenmoertel(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int minFlaeche, int maxFlaeche, Boolean istAusgewaehlt)
@@ -20,6 +26,8 @@ namespace tfmarkt.Produktklassen
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;
+
+            // Member der abstrakten Klasse Zusatzprodukt
             base.gewicht = gewicht;
             base.istAusgewaehlt = istAusgewaehlt;
 

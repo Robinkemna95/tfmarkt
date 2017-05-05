@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    abstract class Zusatzprodukt : Produkt
+    // Abstrakte Klasse der Zusatzprodukte, definiert in allen Zusatzprodukten zur Verfügung gestellte Eigenschaften
+    // Zusatzprodukt erbt Eigenschaften von der abstrakten Klasse Produkt
+    public abstract class Zusatzprodukt : Produkt
     {
         // Klassen Member der abstrakten Klasse Zusatzprodukt
-        public Boolean istAusgewaehlt { get; protected set; }
-        public double gewicht { get; protected set; }
+        public Boolean istAusgewaehlt { get; set; }
+        public double gewicht { get; set; }
     }
 }

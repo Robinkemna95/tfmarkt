@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    abstract class Produkt : ICloneable
+    // Abstrakte Klasse Produkt, definiert in allen Produkten zur Verfügung gestellte Eigenschaften
+    // Produkt implementiert das Interface ICloneable um von sich selbst Kopien erstellen zu können
+    public abstract class Produkt : ICloneable
     {
         // Klassen Member der abstrakten Klasse Produkt
-        public int uid { get; protected set; }
-        public string artikelnummer { get; protected set; }
-        public decimal preis { get; protected set; }
-        public string titel { get; protected set; }
-        public string beschreibung { get; protected set; }
+        public int uid { get; set; }
+        public string artikelnummer { get; set; }
+        public decimal preis { get; set; }
+        public string titel { get;  set; }
+        public string beschreibung { get; set; }
 
         // Rückgabe des Klassennamen bzw. des Produktnamen
         abstract public string produktName();

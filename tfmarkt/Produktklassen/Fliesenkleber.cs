@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    class Fliesenkleber : Zusatzprodukt
+    // Klasse Fliesenkleber definiert was Fliesenkleber ist und was sie alles kann
+    // Fliesenkleber erbt Eigenschaften von der Klasse Zusatzprodukt
+    public class Fliesenkleber : Zusatzprodukt
     {
         // Klassen Member der Klasse Fliesenkleber
         public int minFlaeche { get; set; }
         public int maxFlaeche { get; set; }
 
-         // Konstruktor der Klasse Fliesenkleber
+        public Fliesenkleber()
+        { 
+        }
+
+        // Konstruktor der Klasse Fliesenkleber
         public Fliesenkleber(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int minFlaeche, int maxFlaeche, Boolean istAusgewaehlt)
         {
             // Member der abstrakten Klasse Produkt
@@ -20,6 +26,8 @@ namespace tfmarkt.Produktklassen
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;
+
+            // Member der abstrakten Klasse Zusatzprodukt
             base.gewicht = gewicht;
             base.istAusgewaehlt = istAusgewaehlt;
 

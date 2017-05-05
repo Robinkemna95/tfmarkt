@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    class Fliesenpaket : Produkt
+    // Klasse Fliesenpaket definiert was ein Fliesenpaket ist und was sie alles kann
+    // Fliesenpaket erbt Eigenschaften von der abstrakten Klasse Produkt
+    public class Fliesenpaket : Produkt
     {
         // Klassen Member der Klasse Fliesenpaket
         public int laenge { get; set; }
         public int breite { get; set; }
         public int anzahl { get; set; }
+
+        public Fliesenpaket()
+        { 
+        }
 
         //Konstruktor der Klasse Fliesenpaket
         public Fliesenpaket(string artikelnummer, string titel, string beschreibung, decimal preis, int laenge, int breite, int anzahl)

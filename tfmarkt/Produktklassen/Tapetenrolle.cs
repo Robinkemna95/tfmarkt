@@ -6,18 +6,24 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    class Tapetenrolle : Produkt
+    // Klasse Tapetenrolle definiert was eine Tapetenrolle ist und was sie alles kann
+    // Tapetenrolle erbt Eigenschaften von der abstrakten Klasse Produkt
+    public class Tapetenrolle : Produkt
     {
         // Klassen Member der Klasse Tapetenrolle
         public int laenge { get; set; }
         public int breite { get; set; }
         public int rapport { get; set; }
 
+        public Tapetenrolle()
+        {
+        }
+
         // Konstruktor der Klasse Tapetenrolle
         public Tapetenrolle(string artikelnummer, string titel, string beschreibung, decimal preis, int laenge, int breite, int rapport)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer;
+            base.artikelnummer = artikelnummer; 
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;
@@ -34,7 +40,6 @@ namespace tfmarkt.Produktklassen
             return this.laenge * this.breite;
         }
 
-        
         override public string produktName()
         {
             return this.GetType().Name;

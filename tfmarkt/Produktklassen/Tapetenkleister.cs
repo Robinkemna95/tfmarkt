@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Produktklassen
 {
-    class Tapetenkleister : Zusatzprodukt
+    // Klasse Tapetenkleister definiert was Tapetenkleister ist und was sie alles kann
+    // Tapetenkleister erbt Eigenschaften von der Klasse Zusatzprodukt
+    public class Tapetenkleister : Zusatzprodukt
     {
         // Klassen Member der Klasse Tapetenkleister
         public int flaeche { get; set; }
+
+        public Tapetenkleister()
+        { 
+        }
 
         // Konstruktor der Klasse Tapetenkleister
         public Tapetenkleister(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int flaeche, Boolean istAusgewaehlt)
@@ -19,6 +25,8 @@ namespace tfmarkt.Produktklassen
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;
+
+            // Member der abstrakten Klasse Zusatzprodukt
             base.gewicht = gewicht;
             base.istAusgewaehlt = istAusgewaehlt;
 
