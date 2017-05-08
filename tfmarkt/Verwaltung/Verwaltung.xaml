@@ -1,0 +1,18 @@
+﻿<Window x:Class="tfmarkt.Verwaltung.Verwaltung"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Verwaltung" Height="370" Width="570" MinWidth="570" MinHeight="280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Name="lbProdukte" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <Button Name="btTapeten" Click="btTapeten_Click" Content="Tapeten" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
+            <Button Name="btFliesen" Click="btFliesen_Click" Content="Fliesen" Height="60" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
+            <Button Name="btZusatzprodukte" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
+        </ListBox>
+        <DataGrid Name="dataGrid" Grid.Column="1" />
+
+    </Grid>
+</Window>

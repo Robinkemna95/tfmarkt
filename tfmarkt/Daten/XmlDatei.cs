@@ -10,7 +10,7 @@ using tfmarkt.Produktklassen;
 
 namespace tfmarkt.Daten
 {
-    class XmlDatei : IDatenhandler
+    public class XmlDatei : IDatenhandler
     {
         // Statische Klassen Member der Klasse XmlDatei
         public const string ENDUNG = ".xml";
@@ -31,7 +31,7 @@ namespace tfmarkt.Daten
         {
             // Member der Klasse XmlDatei
             this.xmlVerzeichnis = System.Environment.CurrentDirectory;
-
+            
             this.dateiTapeten = "Tapeten" + ENDUNG;
             this.dateiFliesen = "Fliesen" + ENDUNG;
             this.dateiZusatzprodukte = "Zusatzprodukt";
@@ -169,11 +169,23 @@ namespace tfmarkt.Daten
         // einzelnen Zusatzprodukte in die angegebene XML-Datei
         private bool dateiSchreiben(string dateiname, Type t, object produkt)
         {
-            Boolean erfolgreich = false;
+            Boolean erfolgreich = false,
+                    umbenannt = false;
+
+            String finalName = this.xmlVerzeichnis + "/" + dateiname,
+                   tempName = this.xmlVerzeichnis + "/" + "tmp_" + dateiname;
 
             try
             {
-                using (TextWriter WriteFileStream = new StreamWriter(this.xmlVerzeichnis + "/" + dateiname))
+                // Wenn die XML Datei bereits vorhanden ist, wird sie vorsichtshalber gespeichert
+                // um bei einem Fehler wieder auf die Produktdaten zugreifen zu können
+                if (File.Exists(finalName))
+                {
+                    File.Move(finalName, tempName);
+                    umbenannt = true;
+                }
+
+                using (TextWriter WriteFileStream = new StreamWriter(finalName))
                 {
                     this.xmlSerializer = new XmlSerializer(t);
 
@@ -182,12 +194,18 @@ namespace tfmarkt.Daten
                     // Schließen nicht vergessen
                     WriteFileStream.Close();
 
+                    if (umbenannt)
+                    {
+                        File.Delete(tempName);
+                    }
+
                     erfolgreich = true;
                 }
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.Message);
+                File.Move(tempName, finalName);
             }                            
 
             return erfolgreich;
