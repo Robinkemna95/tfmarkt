@@ -12,6 +12,8 @@ namespace tfmarkt.Kalkulation
     {
         public List<Raum> raeume { get; set; }
         public List<Zusatzprodukt> zusatzprodukte { get; set; }
+        public List<Tapetenrolle> produktlisteTapetenrollen { get; set; }
+        public List<Fliesenpaket> produktlisteFliesenpakete { get; set; }
 
         public Kalkulation(int anzahlRaeume = 1)
         {
@@ -37,23 +39,53 @@ namespace tfmarkt.Kalkulation
             return geloescht;
         }
 
-        public void berechneAlleRaeume()
+        public void kalkuliere()
         {
-            foreach(Raum raum in this.raeume)
+            this.updateProduktlisten();
+            foreach (Tapetenrolle tapetenrolle in produktlisteTapetenrollen)
             {
-                this.berechneRaum(raum);
+                int flaecheWaende = 0;
+                foreach (Raum raum in this.raeume)
+                {
+                    foreach (Wand wand in raum.waende)
+                    {
+                        flaecheWaende += wand.getFlaeche();
+                    }
+                }
+
+                tapetenrolle.getFlaeche();
+            }
+            
+        }
+
+        private void updateProduktlisten()
+        {
+            foreach(Raum raum in raeume)
+            {
+                foreach(Wand wand in raum.waende)
+                {
+                    this.addProduktlisteTapeten(wand.tapete);
+                }
+                foreach(Boden boden in raum.boeden)
+                {
+                    this.addProduktlisteFliesen(boden.fliesen);
+                }
             }
         }
 
-        public void berechneRaum(Raum raum)
+        private void addProduktlisteTapeten(Tapetenrolle tapetenrolle)
         {
-            foreach(Wand wand in raum.waende)
+            if (!this.produktlisteTapetenrollen.Contains(tapetenrolle))
             {
-                this.berechneWand(wand);
+                this.produktlisteTapetenrollen.Add(tapetenrolle);
             }
-            foreach(Boden boden in raum.boeden)
+        }
+
+        private void addProduktlisteFliesen(Fliesenpaket fliesenpaket)
+        {
+            if (!this.produktlisteFliesenpakete.Contains(fliesenpaket))
             {
-                this.berechneBoden(boden);
+                this.produktlisteFliesenpakete.Add(fliesenpaket);
             }
         }
 
