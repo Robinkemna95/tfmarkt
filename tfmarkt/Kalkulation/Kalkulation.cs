@@ -12,8 +12,8 @@ namespace tfmarkt.Kalkulation
     {
         public List<Raum> raeume { get; set; }
         public List<Zusatzprodukt> zusatzprodukte { get; set; }
-        public List<Tapetenrolle> produktlisteTapetenrollen { get; set; }
-        public List<Fliesenpaket> produktlisteFliesenpakete { get; set; }
+        public Dictionary<string, int> produktlisteTapetenrollen { get; set; }
+        public Dictionary<string, int> produktlisteFliesenpaket { get; set; }
 
         public Kalkulation(int anzahlRaeume = 1)
         {
@@ -42,7 +42,7 @@ namespace tfmarkt.Kalkulation
         public void kalkuliere()
         {
             this.updateProduktlisten();
-            foreach (Tapetenrolle tapetenrolle in produktlisteTapetenrollen)
+            foreach (string key in produktlisteTapetenrollen.Keys)
             {
                 int flaecheWaende = 0;
                 foreach (Raum raum in this.raeume)
