@@ -87,6 +87,18 @@ namespace tfmarkt.Verwaltung
             this.dataGrid.Columns[3].Visibility = Visibility.Hidden;
             this.dataGrid.Columns[1].CanUserSort = false;
         }
+
+        private void btnNeu_Click(object sender, RoutedEventArgs e)
+        {
+            Details d;
+
+            if(this.Title.Equals("Verwaltung"))
+                return;
+
+            d = new Details();
+            d.Owner = this;
+            d.ShowDialog();
+        }
     }
 
     // Klasse die nur dazu dient, die Anzeige im DataGrid zu regeln

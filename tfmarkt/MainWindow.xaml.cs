@@ -72,14 +72,26 @@ namespace tfmarkt
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            VerwaltungLogin login;
+            Verwaltung.Verwaltung verwaltung;
             bool result;
-            result = new VerwaltungLogin().ShowDialog().Value;
+            
+            login = new VerwaltungLogin();
+            login.Owner = this;
+
+            result = login.ShowDialog().Value;
 
             lb1.AppendText(String.Format("Login erfolgreich? {0}\n", result));
             lb1.ScrollToEnd();
 
             if (result)
-                new Verwaltung.Verwaltung(this.meinKatalog).ShowDialog();
+            {
+                verwaltung = new Verwaltung.Verwaltung(this.meinKatalog);
+                verwaltung.Owner = this;
+
+                verwaltung.ShowDialog();
+            }
+                
         }
     }
 }
