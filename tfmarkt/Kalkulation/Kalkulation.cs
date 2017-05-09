@@ -13,10 +13,14 @@ namespace tfmarkt.Kalkulation
         public List<Raum> raeume { get; set; }
         public List<Zusatzprodukt> zusatzprodukte { get; set; }
         public Dictionary<string, int> produktlisteTapetenrollen { get; set; }
-        public Dictionary<string, int> produktlisteFliesenpaket { get; set; }
+        public Dictionary<string, int> produktlisteFliesenpakete { get; set; }
+        public Produktkatalog produktkatalog { get; set; }
 
-        public Kalkulation(int anzahlRaeume = 1)
+        public Kalkulation(int anzahlRaeume = 1, Produktkatalog produktkatalog = null)
         {
+            if(produktkatalog != null){
+                this.produktkatalog = produktkatalog;
+            }
             this.raeume.Add(new Raum("erster Raum"));
         }
 
@@ -42,6 +46,7 @@ namespace tfmarkt.Kalkulation
         public void kalkuliere()
         {
             this.updateProduktlisten();
+            
             foreach (string key in produktlisteTapetenrollen.Keys)
             {
                 int flaecheWaende = 0;
@@ -49,11 +54,12 @@ namespace tfmarkt.Kalkulation
                 {
                     foreach (Wand wand in raum.waende)
                     {
-                        flaecheWaende += wand.getFlaeche();
+                        if (wand.tapete == this.produktkatalog.getProdukt(key))
+                        {
+                            flaecheWaende += wand.getFlaeche();
+                        }
                     }
                 }
-
-                tapetenrolle.getFlaeche();
             }
             
         }
@@ -75,17 +81,25 @@ namespace tfmarkt.Kalkulation
 
         private void addProduktlisteTapeten(Tapetenrolle tapetenrolle)
         {
-            if (!this.produktlisteTapetenrollen.Contains(tapetenrolle))
+            if (!this.produktlisteTapetenrollen.ContainsKey(tapetenrolle.artikelnummer))
             {
-                this.produktlisteTapetenrollen.Add(tapetenrolle);
+                this.produktlisteTapetenrollen.Add(tapetenrolle.artikelnummer,1);
+            }
+            else
+            {
+                this.produktlisteTapetenrollen.Add(tapetenrolle.artikelnummer, this.produktlisteTapetenrollen[tapetenrolle.artikelnummer]++);
             }
         }
 
         private void addProduktlisteFliesen(Fliesenpaket fliesenpaket)
         {
-            if (!this.produktlisteFliesenpakete.Contains(fliesenpaket))
+            if (!this.produktlisteFliesenpakete.ContainsKey(fliesenpaket.artikelnummer))
             {
-                this.produktlisteFliesenpakete.Add(fliesenpaket);
+                this.produktlisteFliesenpakete.Add(fliesenpaket.artikelnummer,1);
+            }
+            else
+            {
+                this.produktlisteFliesenpakete.Add(fliesenpaket.artikelnummer, this.produktlisteFliesenpakete[fliesenpaket.artikelnummer]++);
             }
         }
 
