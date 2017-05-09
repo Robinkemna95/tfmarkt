@@ -83,6 +83,10 @@
     </ApplicationDefinition>
     <Compile Include="Daten\IDatenhandler.cs" />
     <Compile Include="Daten\XmlDatei.cs" />
+    <Compile Include="Kalkulation\Boden.cs" />
+    <Compile Include="Kalkulation\Kalkulation.cs" />
+    <Compile Include="Kalkulation\Raum.cs" />
+    <Compile Include="Kalkulation\Wand.cs" />
     <Compile Include="Katalog\Produktkatalog.cs" />
     <Compile Include="Produktklassen\Fliesenkleber.cs" />
     <Compile Include="Produktklassen\Fliesenpaket.cs" />
@@ -154,6 +158,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
