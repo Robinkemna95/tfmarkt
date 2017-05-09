@@ -21,7 +21,7 @@ namespace tfmarkt.Produktklassen
         public Tapetenkleister(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int flaeche, Boolean istAusgewaehlt)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer;
+            base.artikelnummer = "Z" + artikelnummer;
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;

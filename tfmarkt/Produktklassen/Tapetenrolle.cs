@@ -23,7 +23,7 @@ namespace tfmarkt.Produktklassen
         public Tapetenrolle(string artikelnummer, string titel, string beschreibung, decimal preis, int laenge, int breite, int rapport)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer; 
+            base.artikelnummer = "T" + artikelnummer; 
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;

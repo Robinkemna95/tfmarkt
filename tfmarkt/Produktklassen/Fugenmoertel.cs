@@ -22,7 +22,7 @@ namespace tfmarkt.Produktklassen
         public Fugenmoertel(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int minFlaeche, int maxFlaeche, Boolean istAusgewaehlt)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer;
+            base.artikelnummer = "Z" + artikelnummer;
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;

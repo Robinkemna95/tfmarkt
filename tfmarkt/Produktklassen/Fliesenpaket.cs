@@ -23,7 +23,7 @@ namespace tfmarkt.Produktklassen
         public Fliesenpaket(string artikelnummer, string titel, string beschreibung, decimal preis, int laenge, int breite, int anzahl)
         {
             //Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer;
+            base.artikelnummer = "F" + artikelnummer;
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;
