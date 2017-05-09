@@ -53,10 +53,45 @@ namespace tfmarkt.Katalog
             return this.zusatzprodukte[index];
         }
 
-        // Holt ein Produkt heraus zu dem die Artikelnummer passt
+        // Holt ein Produkt heraus zu dem die Artikelnummer passt, sollte keines gefunden
         public Produkt getProdukt(string artikelnummer)
         {
-            return null;
+            Produkt produkt = null;
+
+            // Durch die Liste der Tapeten gehen
+            foreach (Tapetenrolle t in tapeten)
+            {
+                if(t.artikelnummer.Equals(artikelnummer))
+                {
+                    produkt = (Produkt)t.Clone();
+
+                    return produkt;
+                }
+            }
+
+            // Durch die Liste der Fliesen gehen
+            foreach (Fliesenpaket f in fliesen)
+            {
+                if (f.artikelnummer.Equals(artikelnummer))
+                {
+                    produkt = (Produkt)f.Clone();
+
+                    return produkt;
+                }
+            }
+
+            // Durch die Liste der Zusatzprodukte gehen
+            foreach (Zusatzprodukt z in zusatzprodukte)
+            {
+                if (z.artikelnummer.Equals(artikelnummer))
+                {
+                    produkt = (Produkt)z.Clone();
+
+                    return produkt;
+                }
+            }
+            
+            return produkt;
         }
 
         // Fügt dem Produktkatalog eine Tapete hinzu
