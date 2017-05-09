@@ -12,7 +12,7 @@ namespace tfmarkt.Daten
     // Verfügung gestellt werden, das Interface stellt dazu eine gemeinsam nutzbare Schnittstelle
     //
     // Jede Klasse die Daten für den Produktkatalog bereitstellen möchte, muss dieses Interface implementieren 
-    interface IDatenhandler
+    public interface IDatenhandler
     {
         // Sichert den Produktkatalog
         Boolean sichereProduktkatalog(Produktkatalog katalog);

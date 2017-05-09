@@ -11,7 +11,7 @@ namespace tfmarkt.Katalog
     // Der Produktkatalog enthält alle Tapeten, Fliesen und Zusatzprodukte die der tfmarkt verkauft
     // Über das Interface Datenhandler werden die Produktinformationen unabhängig von der Quelle in
     // den Produktkatalog hineingeladen oder gespeichert
-    class Produktkatalog
+    public class Produktkatalog
     {
         // Klassen Member der Klasse Produktkatalog
         public List<string> artikelnummern { get; private set; }
@@ -33,6 +33,30 @@ namespace tfmarkt.Katalog
             // Laden der Daten aus dem Datenhandler, hier wird nur das Interface benötigt
             datenhandler = daten;
             datenhandler.fuelleProduktkatalog(this);
+        }
+
+        //Holt die Tapete mit den Index aus der Liste der Tapeten
+        public Tapetenrolle getTapetenrolle(int index)
+        {
+            return this.tapeten[index];
+        }
+
+        //Holt das Fliesenpaket mit den Index aus der Liste der Fliesenpakete
+        public Fliesenpaket getFliesenpaket(int index)
+        {
+            return this.fliesen[index];
+        }
+
+        //Holt das Zusatzprodukt mit den Index aus der Liste der Zusatzprodukte
+        public Zusatzprodukt getZusatzprodukt(int index)
+        {
+            return this.zusatzprodukte[index];
+        }
+
+        // Holt ein Produkt heraus zu dem die Artikelnummer passt
+        public Produkt getProdukt(string artikelnummer)
+        {
+            return null;
         }
 
         // Fügt dem Produktkatalog eine Tapete hinzu

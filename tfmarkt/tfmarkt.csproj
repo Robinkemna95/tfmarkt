@@ -93,9 +93,13 @@
     <Compile Include="Produktklassen\Fugenmoertel.cs" />
     <Compile Include="Produktklassen\Tapetenkleister.cs" />
     <Compile Include="Produktklassen\Tapetenrolle.cs" />
-    <Compile Include="Produktklassen\Testklasse.cs" />
-    <Compile Include="Produktklassen\TestklasseRobin.cs" />
     <Compile Include="Produktklassen\Zusatzprodukt.cs" />
+    <Compile Include="Verwaltung\Verwaltung.xaml.cs">
+      <DependentUpon>Verwaltung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Verwaltung\VerwaltungLogin.xaml.cs">
+      <DependentUpon>VerwaltungLogin.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,6 +112,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Verwaltung\Verwaltung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Verwaltung\VerwaltungLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Produktklassen\Produkt.cs" />
@@ -128,7 +140,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

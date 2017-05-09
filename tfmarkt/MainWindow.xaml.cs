@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using tfmarkt.Produktklassen;
 using tfmarkt.Katalog;
 using tfmarkt.Daten;
+using tfmarkt.Verwaltung;
 
 namespace tfmarkt
 {
@@ -23,12 +24,14 @@ namespace tfmarkt
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Produktkatalog meinKatalog { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
 
             // Produkte TEST
-            Produktkatalog k = new Produktkatalog(new XmlDatei());
+            this.meinKatalog = new Produktkatalog(new XmlDatei());
             Tapetenrolle t1 = new Tapetenrolle("T002", "Raufaser", "Halt Raufaser", 10.3m, 1200, 80, 60);
             Tapetenrolle t12 = new Tapetenrolle("T003", "Raufaser", "Halt Raufaser", 10.3m, 1200, 80, 60);
             Fliesenpaket t2 = new Fliesenpaket("T001", "Steinfliese", "Halt Steinfliese", 18m, 80, 80, 10);
@@ -39,35 +42,44 @@ namespace tfmarkt
             Tapetenkleister fm = new Tapetenkleister("T006", "Kleister", "Harter Mörtel", 18m, 0.2, 20, false);
 
             // Produktkatalog laden TEST
-            k.datenhandler.fuelleProduktkatalog(k);
+            meinKatalog.datenhandler.fuelleProduktkatalog(meinKatalog);
 
-            Testklasse te = new Testklasse();
-            // Tapetenrolle t2 = (Tapetenrolle)t1.Clone();
+            Tapetenrolle t3 = (Tapetenrolle)t1.Clone();
 
-            //k.addFliese(t2);
-            
-            //k.addTapete(t1);
-            //k.addTapete(t12);
+            meinKatalog.addFliese(t2);
 
-            //k.addZusatzprodukt(tp);
-            //k.addZusatzprodukt(fk);
-            //k.addZusatzprodukt(fm);
+            meinKatalog.addTapete(t1);
+            meinKatalog.addTapete(t12);
 
-            Object t3 = t2.Clone();
+            meinKatalog.addZusatzprodukt(tp);
+            meinKatalog.addZusatzprodukt(fk);
+            meinKatalog.addZusatzprodukt(fm);
 
-            System.Type t = t3.GetType();
+            Object t4 = t2.Clone();
+
+            System.Type t = t4.GetType();
 
             Boolean type = tp.GetType() == t;
             XmlDatei xml = new XmlDatei();
 
-            lb1.Content = string.Format("Preis der/des {0} {1:C}\n", tp.produktName(), tp.preis);
-            lb1.Content += string.Format("{0}\n", k);
-            lb1.Content += string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", k.addTapete(t12));
+            lb1.Text = string.Format("Preis der/des {0} {1:C}\n", tp.produktName(), tp.preis);
+            lb1.Text += string.Format("{0}\n", meinKatalog);
+            lb1.Text += string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12));
 
-            lb1.Content += string.Format("{0}", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten);
-
+            lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //k.datenhandler.sichereProduktkatalog(k);
-          
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool result;
+            result = new VerwaltungLogin().ShowDialog().Value;
+
+            lb1.AppendText(String.Format("Login erfolgreich? {0}\n", result));
+            lb1.ScrollToEnd();
+
+            if (result)
+                new Verwaltung.Verwaltung(this.meinKatalog).ShowDialog();
         }
     }
 }
