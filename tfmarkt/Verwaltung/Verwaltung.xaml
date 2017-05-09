@@ -12,7 +12,13 @@
             <Button Name="btFliesen" Click="btFliesen_Click" Content="Fliesen" Height="60" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
             <Button Name="btZusatzprodukte" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
         </ListBox>
-        <DataGrid Name="dataGrid" Grid.Column="1" />
+        <DataGrid Name="dataGrid" Grid.Column="1" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Artikelnummer"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Preis" HeaderStringFormat="{}{0:C}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

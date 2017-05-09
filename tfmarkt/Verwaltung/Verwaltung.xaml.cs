@@ -32,16 +32,19 @@ namespace tfmarkt.Verwaltung
         private void btZusatzprodukte_Click(object sender, RoutedEventArgs e)
         {
             this.dataGrid.ItemsSource = this.meinKatalog.zusatzprodukte;
+            this.Title = "Verwaltung: Zusatzprodukte";
         }
 
         private void btFliesen_Click(object sender, RoutedEventArgs e)
         {
             this.dataGrid.ItemsSource = this.meinKatalog.fliesen;
+            this.Title = "Verwaltung: Fliesen";
         }
 
         private void btTapeten_Click(object sender, RoutedEventArgs e)
         {
             this.dataGrid.ItemsSource = this.meinKatalog.tapeten;
+            this.Title = "Verwaltung: Tapeten";
         }
     }
 }
