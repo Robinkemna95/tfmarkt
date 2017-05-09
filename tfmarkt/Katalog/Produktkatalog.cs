@@ -54,6 +54,7 @@ namespace tfmarkt.Katalog
         }
 
         // Holt ein Produkt heraus zu dem die Artikelnummer passt, sollte keines gefunden
+        // wird NULL zurückgegeben
         public Produkt getProdukt(string artikelnummer)
         {
             Produkt produkt = null;
