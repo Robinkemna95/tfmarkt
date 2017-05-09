@@ -53,6 +53,12 @@ namespace tfmarkt.Katalog
             return this.zusatzprodukte[index];
         }
 
+        // Holt ein Produkt heraus zu dem die Artikelnummer passt
+        public Produkt getProdukt(string artikelnummer)
+        {
+            return null;
+        }
+
         // Fügt dem Produktkatalog eine Tapete hinzu
         public Boolean addTapete(Tapetenrolle tapete)
         {
