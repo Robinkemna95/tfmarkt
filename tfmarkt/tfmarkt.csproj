@@ -84,6 +84,7 @@
     <Compile Include="Daten\IDatenhandler.cs" />
     <Compile Include="Daten\XmlDatei.cs" />
     <Compile Include="Kalkulation\Boden.cs" />
+    <Compile Include="Kalkulation\Ergebnis.cs" />
     <Compile Include="Kalkulation\Kalkulation.cs" />
     <Compile Include="Kalkulation\Raum.cs" />
     <Compile Include="Kalkulation\Wand.cs" />
