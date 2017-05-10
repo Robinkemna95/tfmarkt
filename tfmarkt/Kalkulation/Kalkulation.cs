@@ -14,6 +14,7 @@ namespace tfmarkt.Kalkulation
         public List<Zusatzprodukt> zusatzprodukte { get; set; }
         public Dictionary<string, int> produktlisteTapetenrollen { get; set; }
         public Dictionary<string, int> produktlisteFliesenpakete { get; set; }
+        public List<Ergebnis> ergebnisse { get; set; }
         public Produktkatalog produktkatalog { get; set; }
 
         public Kalkulation(int anzahlRaeume = 1, Produktkatalog produktkatalog = null)
@@ -46,8 +47,9 @@ namespace tfmarkt.Kalkulation
         public void kalkuliere()
         {
             this.updateProduktlisten();
+            this.ergebnisse = new List<Ergebnis>();
             
-            foreach (string key in produktlisteTapetenrollen.Keys)
+            foreach (string key in produktlisteTapetenrollen.Keys)  // Produkt
             {
                 int flaecheWaende = 0;
                 foreach (Raum raum in this.raeume)
@@ -60,8 +62,31 @@ namespace tfmarkt.Kalkulation
                         }
                     }
                 }
+                // Hier weiter machen
+                /*if(this.produktkatalog.getProdukt(key))
+                Ergebnis ergebnis = this.berechneTapete();*/
+                
+                
             }
-            
+            foreach (string key in produktlisteFliesenpakete.Keys)
+            {
+                int flaecheBoeden = 0;
+                foreach (Raum raum in this.raeume)
+                {
+                    foreach (Boden boden in raum.boeden)
+                    {
+                        if (boden.fliesen == this.produktkatalog.getProdukt(key))
+                        {
+                            flaecheBoeden += boden.getFlaeche();
+                        }
+                    }
+                }
+                Ergebnis ergebnis = this.berechneFliese(flaecheBoeden, (Fliesenpaket)this.produktkatalog.getProdukt(key));
+                if (ergebnis != null)
+                {
+                    ergebnisse.Add(ergebnis);
+                }
+            }    
         }
 
         private void updateProduktlisten()
@@ -103,14 +128,28 @@ namespace tfmarkt.Kalkulation
             }
         }
 
-        protected void berechneWand(Wand wand)
+        protected Ergebnis berechneTapete(int flaeche, Tapetenrolle Tapetenrolle)
         {
-
+            Ergebnis ergebnis = null;
+            return ergebnis;
         }
 
-        protected void berechneBoden(Boden boden)
+        protected Ergebnis berechneTapete(int laenge, int breite, int rapport, Tapetenrolle produkt)
         {
+            Ergebnis ergebnis = null;
+            return ergebnis;
+        }
 
+        protected Ergebnis berechneFliese(int flaeche, Fliesenpaket produkt)
+        {
+            Ergebnis ergebnis = null;
+
+            int anzahl = (int) Math.Ceiling((flaeche/(int)produkt.getFlaeche())*1.05); // Cast entfernen nach pull
+            decimal preis = anzahl*produkt.preis;
+
+            ergebnis = new Ergebnis(flaeche, anzahl, preis, produkt);
+
+            return ergebnis;
         }
     }
 }
