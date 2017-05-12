@@ -103,6 +103,9 @@
     <Compile Include="Verwaltung\VerwaltungLogin.xaml.cs">
       <DependentUpon>VerwaltungLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Verwaltung\ZusatzproduktAuswahl.xaml.cs">
+      <DependentUpon>ZusatzproduktAuswahl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Verwaltung\VerwaltungLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Verwaltung\ZusatzproduktAuswahl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

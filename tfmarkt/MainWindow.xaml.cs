@@ -39,7 +39,7 @@ namespace tfmarkt
             // Zusatzprodukte TEST
             //Fugenmoertel tp = new Fugenmoertel("004", "Mörtel", "Harter Mörtel", 18m, 0.2, 20, 40, false);
             //Fliesenkleber fk = new Fliesenkleber("005", "Kleber", "Super Kleber", 18m, 0.2, 20, 40, false);
-            //Tapetenkleister fm = new Tapetenkleister("006", "Kleister", "Harter Mörtel", 18m, 0.2, 20, false);
+            Tapetenkleister fm = new Tapetenkleister("006", "Kleister", "Harter Mörtel", 18m, 200, 20, false);
 
             // Produktkatalog laden TEST
             meinKatalog.datenhandler.fuelleProduktkatalog(meinKatalog);

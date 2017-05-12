@@ -12,6 +12,6 @@ namespace tfmarkt.Produktklassen
     {
         // Klassen Member der abstrakten Klasse Zusatzprodukt
         public Boolean istAusgewaehlt { get; set; }
-        public double gewicht { get; set; }
+        public int gewicht { get; set; }
     }
 }

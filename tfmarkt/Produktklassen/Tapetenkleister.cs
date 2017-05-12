@@ -18,10 +18,10 @@ namespace tfmarkt.Produktklassen
         }
 
         // Konstruktor der Klasse Tapetenkleister
-        public Tapetenkleister(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int flaeche, Boolean istAusgewaehlt)
+        public Tapetenkleister(string artikelnummer, string titel, string beschreibung, decimal preis, int gewicht, int flaeche, Boolean istAusgewaehlt)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = "Z" + artikelnummer;
+            base.artikelnummer = artikelnummer.StartsWith("Z") ? artikelnummer : "Z" + artikelnummer;
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;

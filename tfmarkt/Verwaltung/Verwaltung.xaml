@@ -1,16 +1,40 @@
 ﻿<Window x:Class="tfmarkt.Verwaltung.Verwaltung"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Verwaltung" Height="640" Width="800" MinWidth="570" MinHeight="280" WindowStartupLocation="CenterOwner">
+        Title="Verwaltung" Height="640" Width="800" MinWidth="570" MinHeight="280" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <ListBox Name="lbProdukte" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <Button Name="btnTapeten" Click="btTapeten_Click" Content="Tapeten" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
-            <Button Name="btnFliesen" Click="btFliesen_Click" Content="Fliesen" Height="60" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
-            <Button Name="btnZusatzprodukte" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}"/>
+            <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Button Name="btnTapeten" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btTapeten_Click" Content="Tapeten" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" BorderThickness="0,1" /> -->
+                <Label Name="btnTapeten" Content="Tapeten" MouseDown="btTapeten_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Name="lbTapeten" Grid.Column="1" Background="white" />
+            </Grid>
+            <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Button Name="btnFliesen" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btFliesen_Click" Content="Fliesen" Height="60" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" BorderThickness="0,1" />-->
+                <Label Name="btnFliesen" Content="Fliesen" MouseDown="btFliesen_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Name="lbFliesen" Grid.Column="1" Background="white" />
+            </Grid>
+            <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Button Name="btnZusatzprodukte" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" OverridesDefaultStyle="True" BorderThickness="0,1" />-->
+                <Label Name="btnZusatzprodukte" Content="Zusatzprodukte" MouseDown="btZusatzprodukte_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Name="lbZusatzprodukt" Grid.Column="1" Background="white" />
+            </Grid>
         </ListBox>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -24,10 +48,10 @@
                     <ColumnDefinition Width="30*"/>
                 </Grid.ColumnDefinitions>
                 <Button Name="btnNeu" Grid.Column="0" Content="Neu" Click="btnNeu_Click"/>
-                <Button Name="btnBearbeiten" Grid.Column="1" Content="Bearbeiten"/>
-                <Button Name="btnLoeschen" Grid.Column="2" Content="Löschen"/>
+                <Button Name="btnBearbeiten" Grid.Column="1" Content="Bearbeiten" Click="btnBearbeiten_Click"/>
+                <Button Name="btnLoeschen" Grid.Column="2" Content="Löschen" Click="btnLoeschen_Click"/>
             </Grid>
-            <DataGrid Name="dataGrid" Grid.Row="1" IsReadOnly="True" CanUserReorderColumns="False" FontSize="22" />
+            <DataGrid Name="dataGrid" Grid.Row="1" IsReadOnly="True" CanUserReorderColumns="False" FontSize="22" SelectionMode="Single" />
         </Grid>
 
 
