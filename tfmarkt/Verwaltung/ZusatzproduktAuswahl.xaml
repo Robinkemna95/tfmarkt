@@ -1,0 +1,16 @@
+﻿<Window x:Class="tfmarkt.Verwaltung.ZusatzproduktAuswahl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Auswahl der Zusatzprodukt Kategorie" Height="60" Width="390" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" WindowState="Normal" BorderBrush="Black" BorderThickness="1">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <RadioButton Grid.Column="0" Content="Tapetenkleister" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
+        <RadioButton Grid.Column="1" Content="Fliesenkleber" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
+        <RadioButton Grid.Column="2" Content="Fugenmörtel" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
+
+    </Grid>
+</Window>
