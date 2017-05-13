@@ -37,7 +37,7 @@ namespace tfmarkt.Produktklassen
         }
 
         // Gibt den Mittelwert aus minFlaeche und maxFlaeche zurück
-        public int getFlaeche()
+        override public int getFlaeche()
         {
             return (this.minFlaeche + this.maxFlaeche) / 2;
         }
