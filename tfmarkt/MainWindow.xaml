@@ -5,7 +5,8 @@
     <Grid>
 
         <TextBox Name="lb1" Text="Hallo Welt" MaxWidth="{Binding ElementName=Grid, Path=ActualWidth}" FontSize="16" TextWrapping="Wrap"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,0,0,107" />
-        <Button Content="Verwaltung" HorizontalAlignment="Left" Height="50" Margin="170,218,0,0" Click="Button_Click" VerticalAlignment="Top" Width="180"/>
+        <Button Content="Verwaltung" HorizontalAlignment="Left" Height="37" Margin="170,218,0,0" Click="Button_Click" VerticalAlignment="Top" Width="180"/>
+        <Button Content="Produktübersicht" HorizontalAlignment="Left" Height="37" Margin="170,260,0,0" Click="Button_Click_1" VerticalAlignment="Top" Width="180"/>
 
         <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="213" VerticalAlignment="Top" Width="507" >
             <Grid>

@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using tfmarkt.Produktklassen;
-using tfmarkt.Katalog;
-using tfmarkt.Daten;
 using tfmarkt.Verwaltung;
+using tfmarkt.Daten;
+using tfmarkt.Katalog;
 
 namespace tfmarkt
 {
@@ -42,7 +42,7 @@ namespace tfmarkt
             Tapetenkleister fm = new Tapetenkleister("006", "Kleister", "Harter Mörtel", 18m, 200, 20, false);
 
             // Produktkatalog laden TEST
-            meinKatalog.datenhandler.fuelleProduktkatalog(meinKatalog);
+            //meinKatalog.datenhandler.fuelleProduktkatalog(meinKatalog);
 
             //Tapetenrolle t3 = (Tapetenrolle)t1.Clone();
 
@@ -63,8 +63,8 @@ namespace tfmarkt
             XmlDatei xml = new XmlDatei();
 
             //lb1.Text = string.Format("Preis der/des {0} {1:C}\n", tp.produktName(), tp.preis);
-            lb1.Text += string.Format("{0}\n", meinKatalog);
-            lb1.Text += string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12));
+            lb1.AppendText(string.Format("{0}\n", meinKatalog));
+            lb1.AppendText(string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12)));
 
             lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //meinKatalog.datenhandler.sichereProduktkatalog(meinKatalog);
@@ -91,7 +91,23 @@ namespace tfmarkt
 
                 verwaltung.ShowDialog();
             }
-                
+            else
+            {
+                MessageBox.Show(this, "Das eingegebene Passwort für die Verwaltung war falsch!!!", "Falsches Passwort");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Produktuebersicht uebersicht;
+
+            lb1.AppendText("Anzeigen der Produktübersicht");
+            lb1.ScrollToEnd();
+
+            uebersicht = new Produktuebersicht(this.meinKatalog);
+            uebersicht.Owner = this;
+
+            uebersicht.ShowDialog();            
         }
     }
 }
