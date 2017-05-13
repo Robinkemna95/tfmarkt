@@ -12,9 +12,40 @@ namespace tfmarkt.Kalkulation
         public List<Wand> waende { get; set; }
         public string name { get; set; }
 
-        public Raum(string name = "")
+        public Raum(string name = "") : this(name, null, null) // Ist nur da um zu zeigen dass wir das können! (╯°□°）╯︵ ┻━┻)
         {
+            
+        }
+
+        public Raum(string name="", List<Wand> waende = null, List<Boden> boeden = null)
+        {
+            this.boeden = new List<Boden>();
+            this.waende = new List<Wand>();
             this.name = name;
+            if(waende != null)
+            {
+                this.addWaende(waende);
+            }
+            if(boeden != null)
+            {
+                this.addBoeden(boeden);
+            }
+        }
+
+        private void addWaende(List<Wand> waende)
+        {
+            foreach(Wand wand in waende)
+            {
+                this.waende.Add(wand);
+            }
+        }
+
+        private void addBoeden(List<Boden> boeden)
+        {
+            foreach(Boden boden in boeden)
+            {
+                this.boeden.Add(boden);
+            }
         }
 
         public Wand neueWand(int breite, int laenge)

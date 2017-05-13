@@ -45,5 +45,10 @@ namespace tfmarkt.Produktklassen
 
             return kopie;
         }
+
+        public override int getFlaeche()
+        {
+            return this.flaeche;
+        }
     }
 }
