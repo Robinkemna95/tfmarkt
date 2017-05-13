@@ -21,5 +21,10 @@ namespace tfmarkt.Kalkulation
             this.preis = preis;
             this.produkt = produkt;
         }
+
+        override public string ToString()
+        {
+            return ""+this.produkt.titel+": Anzahl ("+this.anzahlProdukt+") Kosta quanta: "+this.preis.ToString("C")+"á: "+this.produkt.preis.ToString("C");
+        }
     }
 }
