@@ -3,10 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="TF Markt" Height="350" Width="525" MinHeight="350" MinWidth="525">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <TextBox Name="lb1" Grid.Row="0" Text="Hallo Welt" MaxWidth="{Binding ElementName=Grid, Path=ActualWidth}" FontSize="16" TextWrapping="Wrap"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
 
-        <TextBox Name="lb1" Text="Hallo Welt" MaxWidth="{Binding ElementName=Grid, Path=ActualWidth}" FontSize="16" TextWrapping="Wrap"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,0,0,107" />
-        <Button Content="Verwaltung" HorizontalAlignment="Left" Height="37" Margin="170,218,0,0" Click="Button_Click" VerticalAlignment="Top" Width="180"/>
-        <Button Content="Produktübersicht" HorizontalAlignment="Left" Height="37" Margin="170,260,0,0" Click="Button_Click_1" VerticalAlignment="Top" Width="180"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Content="Verwaltung" Click="Button_Click"  />
+                <Button Grid.Row="1" Content="Produktübersicht" Click="Button_Click_1" />
+            </Grid>
+        </Grid>
+        
+
 
         <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="213" VerticalAlignment="Top" Width="507" >
             <Grid>
