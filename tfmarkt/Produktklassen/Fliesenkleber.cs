@@ -19,10 +19,10 @@ namespace tfmarkt.Produktklassen
         }
 
         // Konstruktor der Klasse Fliesenkleber
-        public Fliesenkleber(string artikelnummer, string titel, string beschreibung, decimal preis, double gewicht, int minFlaeche, int maxFlaeche, Boolean istAusgewaehlt)
+        public Fliesenkleber(string artikelnummer, string titel, string beschreibung, decimal preis, int gewicht, int minFlaeche, int maxFlaeche, Boolean istAusgewaehlt)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer;
+            base.artikelnummer = artikelnummer.StartsWith("Z") ? artikelnummer : "Z" + artikelnummer;
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;

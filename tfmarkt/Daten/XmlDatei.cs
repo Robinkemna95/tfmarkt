@@ -78,6 +78,8 @@ namespace tfmarkt.Daten
             Type tyTapeten = pdKatalog.tapeten.GetType();
             Type tyFliesen = pdKatalog.fliesen.GetType();
 
+            pdKatalog.artikelnummern.Clear();
+
             // Einlesen der Tapeten XML Datei
             if (File.Exists(this.xmlVerzeichnis + "/" + dateiTapeten))
             {
@@ -89,7 +91,7 @@ namespace tfmarkt.Daten
                     pdKatalog.tapeten.Clear();
                     foreach(Tapetenrolle t in tmp)
                     {
-                        pdKatalog.tapeten.Add(t);
+                        pdKatalog.addTapete(t);
                     }
                 }
             }
@@ -105,7 +107,7 @@ namespace tfmarkt.Daten
                     pdKatalog.fliesen.Clear();
                     foreach (Fliesenpaket t in tmp)
                     {
-                        pdKatalog.fliesen.Add(t);
+                        pdKatalog.addFliese(t);
                     }
                 }
             }
@@ -155,7 +157,7 @@ namespace tfmarkt.Daten
                 pdKatalog.zusatzprodukte.Clear();
                 foreach (Zusatzprodukt t in tmpZusatzprodukte)
                 {
-                    pdKatalog.zusatzprodukte.Add(t);
+                    pdKatalog.addZusatzprodukt(t);
                 }
                 
             }
