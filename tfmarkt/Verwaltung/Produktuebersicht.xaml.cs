@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,32 +11,33 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 using tfmarkt.Produktklassen;
+using tfmarkt.Verwaltung;
 using tfmarkt.Katalog;
 
 namespace tfmarkt.Verwaltung
 {
     /// <summary>
-    /// Interaktionslogik für Verwaltung.xaml
+    /// Interaktionslogik für Produktübersicht.xaml
     /// </summary>
-    public partial class Verwaltung : Window
+    public partial class Produktuebersicht : Window
     {
         // Klassen Member der Klasse Verwaltung
         private Produktkatalog meinKatalog;
-        private Details detailAnsicht;
+        private DetailsProduktuebersicht detailAnsicht;
         private Label letzteKategorie;
         private List<Produkt> letzteListe;
 
         public Type type { get; set; }
 
         // Konstruktor der Klasse Verwaltung
-        public Verwaltung(Produktkatalog katalog)
+        public Produktuebersicht(Produktkatalog katalog)
         {
             InitializeComponent();
-
             // Member der Klasse Verwaltung
             this.meinKatalog = katalog;
-            this.detailAnsicht = new Details(this, katalog);
+            this.detailAnsicht = new DetailsProduktuebersicht(this, katalog);
         }
 
         // Aktion beim Drücken des Button Zusatzprodukte
@@ -49,7 +49,7 @@ namespace tfmarkt.Verwaltung
             this.letzteListe = new List<Produkt>(this.meinKatalog.zusatzprodukte);
 
             this.fuelleDataGrid();
-            this.Title = "Verwaltung: Zusatzprodukte";
+            this.Title = "Produktübersicht: Zusatzprodukte";
             this.hervorhebenKategorie(btnZusatzprodukte.Content.ToString());
 
             this.letzteKategorie = (Label)sender;
@@ -64,7 +64,7 @@ namespace tfmarkt.Verwaltung
             this.letzteListe = new List<Produkt>(this.meinKatalog.fliesen);
 
             this.fuelleDataGrid();
-            this.Title = "Verwaltung: Fliesen";
+            this.Title = "Produktübersicht: Fliesen";
             this.hervorhebenKategorie(btnFliesen.Content.ToString());
 
             this.letzteKategorie = (Label)sender;
@@ -79,7 +79,7 @@ namespace tfmarkt.Verwaltung
             this.letzteListe = new List<Produkt>(this.meinKatalog.tapeten);
 
             this.fuelleDataGrid();
-            this.Title = "Verwaltung: Tapeten";
+            this.Title = "Produktübersicht: Tapeten";
             this.hervorhebenKategorie(btnTapeten.Content.ToString());
 
             this.letzteKategorie = (Label)sender;
@@ -124,13 +124,13 @@ namespace tfmarkt.Verwaltung
         // Füllt das DataGrid mit Produkten
         private void fuelleDataGrid()
         {
-            List<GridProdukt> anzeigendeProdukte = new List<GridProdukt>();
+            List<GridProduktKatalog> anzeigendeProdukte = new List<GridProduktKatalog>();
             double breite;
             int anzahlSpalten = 4;
 
             foreach (Produkt p in this.letzteListe)
             {
-                GridProdukt tmp = new GridProdukt(p.GetType());
+                GridProduktKatalog tmp = new GridProduktKatalog(p.GetType());
                 tmp.artikelnummer = p.artikelnummer;
                 tmp.titel = p.titel;
                 tmp.preis = p.preis;
@@ -152,73 +152,10 @@ namespace tfmarkt.Verwaltung
             this.dataGrid.Columns[3].Width = breite / anzahlSpalten;
         }
 
-        // Hinzufügen eines neuen Produktes zum Produktkatalog
-        private void btnNeu_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.Title.Equals("Verwaltung"))
-                return;
-
-            switch (this.Title)
-            {
-                case "Verwaltung: Tapeten":
-                    type = typeof(Tapetenrolle);
-                    break;
-                case "Verwaltung: Fliesen":
-                    type = typeof(Fliesenpaket);
-                    break;
-                case "Verwaltung: Zusatzprodukte":
-                    ZusatzproduktAuswahl za = new ZusatzproduktAuswahl(this);
-                    za.Owner = this;
-                    za.ShowDialog();
-                    break;
-            }
-
-            this.detailAnsicht.produktTyp = this.type;
-            this.detailAnsicht.art = Details.Bearbeitung.istNeu;
-
-            this.detailAnsicht.Owner = this;
-            this.detailAnsicht.anpassungDetailAnsicht();
-            this.detailAnsicht.ShowDialog();
-        }
-
-        // Bearbeiten des ausgewählten Produktes im Produktkatalog
-        private void btnBearbeiten_Click(object sender, RoutedEventArgs e)
-        {
-            GridProdukt auswahl = (GridProdukt)this.dataGrid.SelectedItem;
-            Produkt produkt;
-
-            if (auswahl != null)
-            {
-                //MessageBox.Show(this, auswahl.ToString());
-                produkt = this.meinKatalog.getProdukt(auswahl.artikelnummer, false);
-
-                //d = new Details(produkt.GetType(), Details.Bearbeitung.istBearbeitung);
-                //d.Owner = this;
-
-                this.detailAnsicht.produkt = produkt;
-                this.detailAnsicht.produktTyp = produkt.GetType();
-                this.detailAnsicht.art = Details.Bearbeitung.istBearbeitung;
-
-                this.detailAnsicht.Owner = this;
-                this.detailAnsicht.anpassungDetailAnsicht();
-                this.detailAnsicht.detailsFuellen(produkt);
-
-                this.detailAnsicht.ShowDialog();
-            }
-            else
-                MessageBox.Show(this, "Nichts ausgewählt zum Bearbeiten.");
-        }
-
-        // Beim Schließen der Verwaltung müssen noch die Ressourcen für die Details freigegeben werden
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            this.detailAnsicht.Close();
-        }
-
         // Wird ausgelöst wenn ein Produkt gelöscht werden soll
         private void btnLoeschen_Click(object sender, RoutedEventArgs e)
         {
-            GridProdukt auswahl = (GridProdukt)this.dataGrid.SelectedItem;
+            GridProduktKatalog auswahl = (GridProduktKatalog)this.dataGrid.SelectedItem;
             Produkt produkt;
 
             if (auswahl != null)
@@ -226,7 +163,7 @@ namespace tfmarkt.Verwaltung
                 //MessageBox.Show(this, auswahl.ToString());
                 produkt = this.meinKatalog.getProdukt(auswahl.artikelnummer, false);
 
-                if (!(MessageBox.Show(this, String.Format("Wollen Sie das Produkt \"{0}\" wirklich löschen?", produkt.titel), produkt.GetType().Name + ": Produkt löschen", MessageBoxButton.OKCancel) == MessageBoxResult.OK))
+                if (!(MessageBox.Show(this, "Wollen Sie das ausgewählte Produkt wirklich löschen?", produkt.GetType().Name + ": Produkt löschen", MessageBoxButton.OKCancel) == MessageBoxResult.OK))
                 {
                     return;
                 }
@@ -261,12 +198,39 @@ namespace tfmarkt.Verwaltung
                 return;
             }
 
-            btnBearbeiten_Click(null, null);
+            GridProduktKatalog auswahl = (GridProduktKatalog)this.dataGrid.SelectedItem;
+            Produkt produkt;
+
+            if (auswahl != null)
+            {
+                //MessageBox.Show(this, auswahl.ToString());
+                produkt = this.meinKatalog.getProdukt(auswahl.artikelnummer, false);
+
+                //d = new Details(produkt.GetType(), Details.Bearbeitung.istBearbeitung);
+                //d.Owner = this;
+
+                this.detailAnsicht.produkt = produkt;
+                this.detailAnsicht.produktTyp = produkt.GetType();
+
+                this.detailAnsicht.Owner = this;
+                this.detailAnsicht.anpassungDetailAnsicht();
+                this.detailAnsicht.detailsFuellen(produkt);
+
+                this.detailAnsicht.ShowDialog();
+            }
+            else
+                MessageBox.Show(this, "Nichts ausgewählt zum Anzeigen.");
+        }
+
+        // Beim Schließen der Verwaltung müssen noch die Ressourcen für die Details freigegeben werden
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.detailAnsicht.Close();
         }
     }
 
     // Klasse die nur dazu dient, die Anzeige für das DataGrid bereitzustellen
-    internal class GridProdukt : ObservableCollection<Produkt>
+    internal class GridProduktKatalog : ObservableCollection<Produkt> 
     {
         public string produkt { get; set; }
         public string artikelnummer { get; set; }
@@ -275,7 +239,7 @@ namespace tfmarkt.Verwaltung
 
         private Type type;
 
-        public GridProdukt(Type type)
+        public GridProduktKatalog(Type type)
         {
             this.type = type;
             this.produkt = umlauteAnpassen(type.Name);

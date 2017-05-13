@@ -20,10 +20,10 @@ namespace tfmarkt.Produktklassen
         }
 
         // Konstruktor der Klasse Tapetenrolle
-        public Tapetenrolle(string artikelnummer, string titel, string beschreibung, decimal preis, int laenge, int breite, int rapport)
+        public Tapetenrolle(string artikelnummer, string titel, string beschreibung, decimal preis, int laenge, int breite, int rapport = 0)
         {
             // Member der abstrakten Klasse Produkt
-            base.artikelnummer = artikelnummer; 
+            base.artikelnummer = artikelnummer.StartsWith("T") ? artikelnummer : "T" + artikelnummer; ; 
             base.titel = titel;
             base.beschreibung = beschreibung;
             base.preis = preis;
@@ -35,7 +35,7 @@ namespace tfmarkt.Produktklassen
         }
 
         // Rückgabe der Fläche die mit dieser Tapete beklebt werden kan
-        public double getFlaeche()
+        public int getFlaeche()
         {
             return this.laenge * this.breite;
         }

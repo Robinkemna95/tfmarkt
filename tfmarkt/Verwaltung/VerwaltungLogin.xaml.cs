@@ -35,7 +35,7 @@ namespace tfmarkt.Verwaltung
             if (e.Key != Key.Enter)
                 return;
 
-            MessageBox.Show(String.Format("Eingegebenes Passwort: {0}\n Entspricht dem Verwaltungspasswort: {1}", pbPasswort.Password, PASSWORT.Equals(pbPasswort.Password)));
+            //MessageBox.Show(this, String.Format("Eingegebenes Passwort: {0}\n Entspricht dem Verwaltungspasswort: {1}", pbPasswort.Password, PASSWORT.Equals(pbPasswort.Password)));
             DialogResult = PASSWORT.Equals(pbPasswort.Password.Trim());
         }
     }
