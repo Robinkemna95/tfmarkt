@@ -53,8 +53,41 @@ namespace tfmarkt.Katalog
             return this.zusatzprodukte[index];
         }
 
-        // Holt ein Produkt heraus zu dem die Artikelnummer passt, sollte keines gefunden
+        // Prüft ob eine Artikelnummer bereits vergeben ist zu einem bestimmten
+        // Typ
+        public bool artikelnummerVorhanden(String artikelnummer, Type produkt)
+        {
+            String prefix = "";
+            bool bereitsVorhanden = false;
+
+            if (produkt == typeof(Tapetenrolle))
+            {
+                prefix = "T";
+            }
+            else if (produkt == typeof(Fliesenpaket))
+            {
+                prefix = "F";
+            }
+            else if (produkt == typeof(Tapetenrolle))
+            {
+                prefix = "Z";
+            }
+
+            bereitsVorhanden = this.artikelnummern.Contains(prefix + artikelnummer);
+
+            return bereitsVorhanden;
+        }
+
+        // Gibt eine Kopie des gefundenen Produktes zurück
+        // oder NULL
         public Produkt getProdukt(string artikelnummer)
+        {
+           return this.getProdukt(artikelnummer, true);
+        }
+
+        // Holt ein Produkt heraus zu dem die Artikelnummer passt, sollte keines gefunden
+        // werden wird NULL zurückgegeben
+        public Produkt getProdukt(string artikelnummer, Boolean kopie)
         {
             Produkt produkt = null;
 
@@ -63,7 +96,7 @@ namespace tfmarkt.Katalog
             {
                 if(t.artikelnummer.Equals(artikelnummer))
                 {
-                    produkt = (Produkt)t.Clone();
+                    produkt = kopie ? (Produkt)t.Clone() : t;
 
                     return produkt;
                 }
@@ -74,7 +107,7 @@ namespace tfmarkt.Katalog
             {
                 if (f.artikelnummer.Equals(artikelnummer))
                 {
-                    produkt = (Produkt)f.Clone();
+                    produkt = kopie ? (Produkt)f.Clone() : f;
 
                     return produkt;
                 }
@@ -85,7 +118,7 @@ namespace tfmarkt.Katalog
             {
                 if (z.artikelnummer.Equals(artikelnummer))
                 {
-                    produkt = (Produkt)z.Clone();
+                    produkt = kopie ? (Produkt)z.Clone() : z;
 
                     return produkt;
                 }
@@ -94,7 +127,8 @@ namespace tfmarkt.Katalog
             return produkt;
         }
 
-        // Fügt dem Produktkatalog eine Tapete hinzu
+        // Fügt dem Produktkatalog eine Tapete hinzu und sichert
+        // die neuen Daten
         public Boolean addTapete(Tapetenrolle tapete)
         {
             Boolean erfolgreich = false;
@@ -146,7 +180,8 @@ namespace tfmarkt.Katalog
             return erfolgreich;
         }
 
-        // Fügt dem Produktkatalog ein Fliesenpaket hinzu
+        // Fügt dem Produktkatalog ein Fliesenpaket hinzu und sichert
+        // die neuen Daten
         public Boolean addFliese(Fliesenpaket fliese)
         {
             Boolean erfolgreich = false;
@@ -198,10 +233,28 @@ namespace tfmarkt.Katalog
             return erfolgreich;
         }
 
-        // Fügt dem Produktkatalog ein Zusatzprodukt hinzu
+        // Fügt dem Produktkatalog ein Zusatzprodukt hinzu und sichert
+        // die neuen Daten
         public Boolean addZusatzprodukt(Zusatzprodukt zusatzProdukt)
         {
             Boolean erfolgreich = false;
+
+            if (this.zusatzprodukte.Count == 3)
+            {
+                erfolgreich = false;
+
+                return erfolgreich;
+            }
+
+            foreach (Zusatzprodukt z in this.zusatzprodukte)
+            {
+                if (z.GetType() == zusatzProdukt.GetType())
+                {
+                    erfolgreich = false;
+
+                    return erfolgreich;
+                }
+            }
 
             try
             {
