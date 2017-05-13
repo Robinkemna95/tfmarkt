@@ -1,7 +1,7 @@
-﻿<Window x:Class="tfmarkt.Verwaltung.Verwaltung"
+﻿<Window x:Class="tfmarkt.Verwaltung.Produktuebersicht"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Verwaltung" Height="640" Width="900" MinWidth="570" MinHeight="280" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
+        Title="Produktübersicht" Height="640" Width="800" MinWidth="570" MinHeight="280" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
@@ -36,22 +36,8 @@
                 <Label Name="lbZusatzprodukt" Grid.Column="1" Background="white" />
             </Grid>
         </ListBox>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="90*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="30*"/>
-                </Grid.ColumnDefinitions>
-                <Button Name="btnNeu" Grid.Column="0" Content="Neu" Click="btnNeu_Click"/>
-                <Button Name="btnBearbeiten" Grid.Column="1" Content="Bearbeiten" Click="btnBearbeiten_Click"/>
-                <Button Name="btnLoeschen" Grid.Column="2" Content="Löschen" Click="btnLoeschen_Click"/>
-            </Grid>
-            <DataGrid Name="dataGrid" Grid.Row="1" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick" CanUserReorderColumns="False" FontSize="22" SelectionMode="Single" />
+        <Grid Grid.Column="1">            
+            <DataGrid Name="dataGrid" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick" CanUserReorderColumns="False" FontSize="22" SelectionMode="Single" />
         </Grid>
 
 
