@@ -24,7 +24,7 @@
 
             <!-- Grid Body -left- -->
 
-            <ListBox Name="lbRaeume"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListBox Name="lbRaeume" BorderBrush="LightSalmon" BorderThickness="4"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                 <ListBoxItem Height="25" Selected="ShowDetail">
                     Raum
                 </ListBoxItem>

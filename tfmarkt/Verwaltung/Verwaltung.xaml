@@ -7,35 +7,43 @@
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name="lbProdukte" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80*"/>
-                    <ColumnDefinition Width="20*"/>
-                </Grid.ColumnDefinitions>
-                <!--<Button Name="btnTapeten" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btTapeten_Click" Content="Tapeten" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" BorderThickness="0,1" /> -->
-                <Label Name="btnTapeten" Content="Tapeten" MouseDown="btTapeten_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Name="lbTapeten" Grid.Column="1" Background="white" />
-            </Grid>
-            <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80*"/>
-                    <ColumnDefinition Width="20*"/>
-                </Grid.ColumnDefinitions>
-                <!--<Button Name="btnFliesen" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btFliesen_Click" Content="Fliesen" Height="60" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" BorderThickness="0,1" />-->
-                <Label Name="btnFliesen" Content="Fliesen" MouseDown="btFliesen_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Name="lbFliesen" Grid.Column="1" Background="white" />
-            </Grid>
-            <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80*"/>
-                    <ColumnDefinition Width="20*"/>
-                </Grid.ColumnDefinitions>
-                <!--<Button Name="btnZusatzprodukte" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" OverridesDefaultStyle="True" BorderThickness="0,1" />-->
-                <Label Name="btnZusatzprodukte" Content="Zusatzprodukte" MouseDown="btZusatzprodukte_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Name="lbZusatzprodukt" Grid.Column="1" Background="white" />
-            </Grid>
-        </ListBox>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <ListBox Name="lbProdukte" BorderBrush="LightGreen" BorderThickness="4" Grid.Row="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<Button Name="btnTapeten" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btTapeten_Click" Content="Tapeten" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" BorderThickness="0,1" /> -->
+                    <Label Name="btnTapeten" Content="Tapeten" MouseDown="btTapeten_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Name="lbTapeten" Grid.Column="1" Background="white" />
+                </Grid>
+                <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<Button Name="btnFliesen" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btFliesen_Click" Content="Fliesen" Height="60" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" BorderThickness="0,1" />-->
+                    <Label Name="btnFliesen" Content="Fliesen" MouseDown="btFliesen_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Name="lbFliesen" Grid.Column="1" Background="white" />
+                </Grid>
+                <Grid Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<Button Name="btnZusatzprodukte" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" OverridesDefaultStyle="True" BorderThickness="0,1" />-->
+                    <Label Name="btnZusatzprodukte" Content="Zusatzprodukte" MouseDown="btZusatzprodukte_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Name="lbZusatzprodukt" Grid.Column="1" Background="white" />
+                </Grid>
+            </ListBox>
+        </Grid>
+        
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
