@@ -21,7 +21,8 @@ namespace tfmarkt.Verwaltung
     {
         // Das Passwort für die Verwaltung ist fest verdrahtet im Programmcode hinterlegt
         private const string PASSWORT = "2017";
-            
+        public Boolean loginPruefen { get; private set; }
+    
         // Konstruktor um vor betreten der Verwaltung die Zugriffsberechtigung zu prüfen
         public VerwaltungLogin()
         {
@@ -36,6 +37,7 @@ namespace tfmarkt.Verwaltung
                 return;
 
             //MessageBox.Show(this, String.Format("Eingegebenes Passwort: {0}\n Entspricht dem Verwaltungspasswort: {1}", pbPasswort.Password, PASSWORT.Equals(pbPasswort.Password)));
+            this.loginPruefen = true;
             DialogResult = PASSWORT.Equals(pbPasswort.Password.Trim());
         }
     }

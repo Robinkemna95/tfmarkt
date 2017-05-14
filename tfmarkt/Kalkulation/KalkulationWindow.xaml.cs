@@ -53,5 +53,45 @@ namespace tfmarkt.Kalkulation
             lbRaeume.Items.Add(new Raum("erster Raum", waende, boeden));
 
         }
+
+        
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+
+            this.Close();
+        }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Label tmp = (Label)sender;
+
+            tmp.Foreground = Brushes.White;
+            tmp.Background = Brushes.Black;
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Label tmp = (Label)sender;
+
+            tmp.Background = Brushes.White;
+            tmp.Foreground = Brushes.Black;
+        }
+
+        private void Label_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            // Hie wird eine Kalkulation vorbereitet und die Ausgabe formatiert und angezeigt
+            Kalkulation testKalkulation = new Kalkulation(0, katalog);
+            testKalkulation.kalkuliere();
+
+            Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(testKalkulation.ergebnisse);
+            ausgabe.Owner = this;
+            ausgabe.ausgabeFormatieren();
+            ausgabe.ShowDialog();
+        }
     }
 }

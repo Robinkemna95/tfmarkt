@@ -13,18 +13,18 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="8*"/>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!-- Grid Kopf -->
-            <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0">Räume</Label>
+            <Label Content="Räume" BorderBrush="Black" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" />
 
             <!-- Grid Body -left- -->
 
-            <ListBox Name="lbRaeume"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListBox Name="lbRaeume" BorderBrush="LightSalmon" BorderThickness="4"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                 <ListBoxItem Height="25" Selected="ShowDetail">
                     Raum
                 </ListBoxItem>
@@ -40,7 +40,10 @@
                 <Label Grid.Column="0" Content="+" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
                 <Label Grid.Column="1" Content="-" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
             </Grid>
-            
+
+            <Label Content="Kalkulation" Grid.Row="3" MouseDown="Label_MouseDown_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+            <Label Content="Schließen" Grid.Row="4" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
 
         <!-- Grid Body -right- -->

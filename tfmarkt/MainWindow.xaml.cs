@@ -27,30 +27,22 @@ namespace tfmarkt
     public partial class MainWindow : Window
     {
 
-        private string verwaltungImage { get
-            {
-                return Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
-            }
-        }
-        private string kalkulationImage
-        {
-            get
-            {
-                return System.Environment.CurrentDirectory + "/images/Kalkulieren.png";
-            }
-        }
-        private string uebersichtImage
-        {
-            get
-            {
-                return System.Environment.CurrentDirectory + "/images/Uebersicht.png";
-            }
-        }
+        private string verwaltungImage = Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
+
+        private string kalkulationImage = Convert.ToString(System.IO.Path.GetFullPath("images/Kalkulieren.png"));
+
+        private string uebersichtImage = Convert.ToString(System.IO.Path.GetFullPath("images/Uebersicht.png"));
+
         public Produktkatalog meinKatalog { get; set; }
+
+        public Boolean loginPruefen { get; private set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            lblVerwaltung.Background = new ImageBrush(new BitmapImage(new Uri(this.verwaltungImage)));
+            lblUebersicht.Background = new ImageBrush(new BitmapImage(new Uri(this.uebersichtImage)));
+            lblKalkulation.Background = new ImageBrush(new BitmapImage(new Uri(this.kalkulationImage)));
 
             // Produkte TEST
             this.meinKatalog = new Produktkatalog(new XmlDatei());
@@ -90,21 +82,34 @@ namespace tfmarkt
 
             lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //meinKatalog.datenhandler.sichereProduktkatalog(meinKatalog);
-
-        
-            lb1.AppendText(System.IO.Path.GetFullPath("images/Verwaltung.png"));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Label_Click(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+
             VerwaltungLogin login;
             Verwaltung.Verwaltung verwaltung;
+            Nullable<bool> returnValue;
             bool result;
             
             login = new VerwaltungLogin();
             login.Owner = this;
 
-            result = login.ShowDialog().Value;
+            returnValue = login.ShowDialog();
+            this.loginPruefen = login.loginPruefen;
+
+            lb1.AppendText("returnValue: " + returnValue + "\n");
+
+            if (!this.loginPruefen)
+            {
+                return;
+            }
+
+            result = returnValue.Value;
 
             lb1.AppendText(String.Format("Login erfolgreich? {0}\n", result));
             lb1.ScrollToEnd();
@@ -122,8 +127,13 @@ namespace tfmarkt
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Label_Click_1(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+
             Produktuebersicht uebersicht;
 
             lb1.AppendText("Anzeigen der Produktübersicht");
@@ -135,20 +145,30 @@ namespace tfmarkt
             uebersicht.ShowDialog();            
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Label_Click_2(object sender, MouseButtonEventArgs e)
         {
-            // Hie wird eine Kalkulation vorbereitet und die Ausgabe formatiert und angezeigt
-            /*Kalkulation.Kalkulation testKalkulation = new Kalkulation.Kalkulation(0, meinKatalog);
-            testKalkulation.kalkuliere();
-
-            Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(testKalkulation.ergebnisse);
-            ausgabe.Owner = this;
-            ausgabe.ausgabeFormatieren();
-            ausgabe.ShowDialog();*/
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
 
             KalkulationWindow window = new KalkulationWindow(this.meinKatalog);
             window.Owner = this;
             window.ShowDialog();
+        }
+
+        private void lbl_MouseEnter_Opacity(object sender, MouseEventArgs e)
+        {
+            Label tmp = (Label)sender;
+
+            tmp.Background.Opacity = 0.5;
+        }
+
+        private void lbl_MouseLeave_Opacity(object sender, MouseEventArgs e)
+        {
+            Label tmp = (Label)sender;
+
+            tmp.Background.Opacity = 1;
         }
     }
 }

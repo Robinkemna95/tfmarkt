@@ -263,6 +263,32 @@ namespace tfmarkt.Verwaltung
 
             btnBearbeiten_Click(null, null);
         }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+
+            this.Close();
+        }
+        
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Label tmp = (Label)sender;
+
+            tmp.Foreground = Brushes.White;
+            tmp.Background = Brushes.Black;
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Label tmp = (Label)sender;
+
+            tmp.Background = Brushes.White;
+            tmp.Foreground = Brushes.Black;
+        }
     }
 
     // Klasse die nur dazu dient, die Anzeige für das DataGrid bereitzustellen

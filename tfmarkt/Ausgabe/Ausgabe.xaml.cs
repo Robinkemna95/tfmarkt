@@ -78,14 +78,21 @@ namespace tfmarkt.Ausgabe
                         || ergebnis.produkt.GetType() == typeof(Fliesenkleber)
                         || ergebnis.produkt.GetType() == typeof(Fugenmoertel))
                     {
-                        kategorie = typeof(Zusatzprodukt).Name;
+                        if (kategorie.Equals(typeof(Zusatzprodukt).Name))
+                        {
+                            produktNameAusgeben = false;
+                        }
+                        else
+                        {
+                            kategorie = typeof(Zusatzprodukt).Name;
+                            produktNameAusgeben = true;
+                        }
                     }
                     else
                     {
                         kategorie = ergebnis.produkt.produktName();
+                        produktNameAusgeben = true;
                     }
-                    
-                    produktNameAusgeben = true;
                 }
                 else
                 {
@@ -98,12 +105,15 @@ namespace tfmarkt.Ausgabe
                 preisNetto = Convert.ToDecimal(ergebnis.preis / 1.19m);
                 preisBrutto = ergebnis.preis;
 
-                lbAusgabe.Items.Add(String.Format(" {0,-5} {1,-18} {2,65} {3,-5} {4,20:C} {5,20:C} {6,20:C}", cnt++, produktNameAusgeben ? kategorie : "", name, anzahl, einzelpreisNetto, preisNetto, preisBrutto));
+                lbAusgabe.Items.Add(String.Format("{0,-5}{1,-15}{2,-35}{3,-8}{4,12:C}{5,18:C}{6,15:C}", cnt++, produktNameAusgeben ? kategorie : "", name, anzahl, einzelpreisNetto, preisNetto, preisBrutto));
                 gesamtbetrag += ergebnis.preis;
             }
 
             this.leerzeilenEinfuegen(1);
             this.fussZeileErzeugen(gesamtbetrag);
+
+            this.leerzeilenEinfuegen(3);
+            this.lbAusgabe.Items.Add("Danke für Ihr Vertrauen in uns...Ihr tfMarkt Team!!! ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°)");
         }
 
         // Die statische Kopfzeile wird generiert mit den Überschriften
@@ -112,12 +122,12 @@ namespace tfmarkt.Ausgabe
         {
             ListBoxItem lbiKopfzeile = new ListBoxItem();
 
-            String kopfzeile = String.Format("{0,-5}{1,-18}{2,-65}{3,-5}{4,20}{5,20}{6,20}", "Pos.", "Kategorie", "Name", "Anzahl (stk)", "Einzelpr. (Netto)", "Preis (Netto)", "Preis (Brutto)");
-            String unterstrich = new String('-', 150);
+            String kopfzeile = String.Format("{0,-5}{1,-15}{2,-34}{3,-8}{4,15}{5,15}{6,15}", "Pos.", "Kategorie", "Name", "Menge", "Einzelpr. (Netto)", "Preis (Netto)", "Preis (Brutto)");
+            String unterstrich = new String('-', 110);
 
             lbiKopfzeile.FontStyle = FontStyles.Oblique;
             lbiKopfzeile.Content = kopfzeile;
-
+            
             this.lbAusgabe.Items.Add(lbiKopfzeile);
             this.lbAusgabe.Items.Add(unterstrich);
         }
@@ -126,8 +136,8 @@ namespace tfmarkt.Ausgabe
         // des Gesamtbetrags
         private void fussZeileErzeugen(decimal gesamtbetrag)
         {
-            String fusszeile = String.Format("{0,105}{1,15:C}", "Gesamtbetrag: ", gesamtbetrag);
-            String unterstrich = new String('-', 150);
+            String fusszeile = String.Format("{0,94}{1,14:C}", "Gesamtbetrag: ", gesamtbetrag);
+            String unterstrich = new String('-', 110);
 
             this.lbAusgabe.Items.Add(unterstrich);
             this.lbAusgabe.Items.Add(fusszeile);

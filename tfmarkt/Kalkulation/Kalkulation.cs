@@ -38,6 +38,18 @@ namespace tfmarkt.Kalkulation
                 wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T001");
                 waende.Add(wand);
             }
+            for (int i = 4; i > 0; i--)
+            {
+                Wand wand = new Wand(250, 400);
+                wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T003");
+                waende.Add(wand);
+            }
+            for (int i = 4; i > 0; i--)
+            {
+                Wand wand = new Wand(500, 250);
+                wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T004");
+                waende.Add(wand);
+            }
             
 
             List<Boden> boeden = new List<Boden>();
@@ -50,10 +62,14 @@ namespace tfmarkt.Kalkulation
             boden1.fliesen = (Fliesenpaket)produktkatalog.getProdukt("F003");
             boeden.Add(boden1);
 
+            boden1 = new Boden(250, 380);
+            boden1.fliesen = (Fliesenpaket)produktkatalog.getProdukt("F004");
+            boeden.Add(boden1);
+
             this.raeume.Add(new Raum("erster Raum", waende, boeden));
 
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(0));
-            
+            this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(1));
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(2));
             
             /* Testdaten Ende */
