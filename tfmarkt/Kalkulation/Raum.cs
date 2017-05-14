@@ -12,21 +12,21 @@ namespace tfmarkt.Kalkulation
         public List<Wand> waende { get; set; }
         public string name { get; set; }
 
-        public Raum(string name = "") : this(name, null, null) // Ist nur da um zu zeigen dass wir das können! (╯°□°）╯︵ ┻━┻)
+        public Raum(string name = "Raum") : this(name, null, null) // Ist nur da um zu zeigen dass wir das können! (╯°□°）╯︵ ┻━┻)
         {
-            
+
         }
 
-        public Raum(string name="", List<Wand> waende = null, List<Boden> boeden = null)
+        public Raum(string name = "", List<Wand> waende = null, List<Boden> boeden = null)
         {
             this.boeden = new List<Boden>();
             this.waende = new List<Wand>();
             this.name = name;
-            if(waende != null)
+            if (waende != null)
             {
                 this.addWaende(waende);
             }
-            if(boeden != null)
+            if (boeden != null)
             {
                 this.addBoeden(boeden);
             }
@@ -34,7 +34,7 @@ namespace tfmarkt.Kalkulation
 
         private void addWaende(List<Wand> waende)
         {
-            foreach(Wand wand in waende)
+            foreach (Wand wand in waende)
             {
                 this.waende.Add(wand);
             }
@@ -42,7 +42,7 @@ namespace tfmarkt.Kalkulation
 
         private void addBoeden(List<Boden> boeden)
         {
-            foreach(Boden boden in boeden)
+            foreach (Boden boden in boeden)
             {
                 this.boeden.Add(boden);
             }
@@ -93,11 +93,16 @@ namespace tfmarkt.Kalkulation
                     geloescht = true;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
             return geloescht;
+        }
+
+        override public string ToString()
+        {
+            return this.name;
         }
     }
 }

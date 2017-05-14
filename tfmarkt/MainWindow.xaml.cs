@@ -17,6 +17,7 @@ using tfmarkt.Verwaltung;
 using tfmarkt.Daten;
 using tfmarkt.Katalog;
 using tfmarkt.Kalkulation;
+using System.IO;
 
 namespace tfmarkt
 {
@@ -25,6 +26,26 @@ namespace tfmarkt
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private string verwaltungImage { get
+            {
+                return Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
+            }
+        }
+        private string kalkulationImage
+        {
+            get
+            {
+                return System.Environment.CurrentDirectory + "/images/Kalkulieren.png";
+            }
+        }
+        private string uebersichtImage
+        {
+            get
+            {
+                return System.Environment.CurrentDirectory + "/images/Uebersicht.png";
+            }
+        }
         public Produktkatalog meinKatalog { get; set; }
 
         public MainWindow()
@@ -69,6 +90,9 @@ namespace tfmarkt
 
             lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //meinKatalog.datenhandler.sichereProduktkatalog(meinKatalog);
+
+        
+            lb1.AppendText(System.IO.Path.GetFullPath("images/Verwaltung.png"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -114,13 +138,17 @@ namespace tfmarkt
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             // Hie wird eine Kalkulation vorbereitet und die Ausgabe formatiert und angezeigt
-            Kalkulation.Kalkulation testKalkulation = new Kalkulation.Kalkulation(0, meinKatalog);
+            /*Kalkulation.Kalkulation testKalkulation = new Kalkulation.Kalkulation(0, meinKatalog);
             testKalkulation.kalkuliere();
 
             Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(testKalkulation.ergebnisse);
             ausgabe.Owner = this;
             ausgabe.ausgabeFormatieren();
-            ausgabe.ShowDialog();
+            ausgabe.ShowDialog();*/
+
+            KalkulationWindow window = new KalkulationWindow(this.meinKatalog);
+            window.Owner = this;
+            window.ShowDialog();
         }
     }
 }
