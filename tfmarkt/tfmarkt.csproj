@@ -81,6 +81,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Ausgabe\Ausgabe.xaml.cs">
+      <DependentUpon>Ausgabe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Daten\IDatenhandler.cs" />
     <Compile Include="Daten\XmlDatei.cs" />
     <Compile Include="Kalkulation\Boden.cs" />
@@ -113,6 +116,10 @@
     <Compile Include="Verwaltung\ZusatzproduktAuswahl.xaml.cs">
       <DependentUpon>ZusatzproduktAuswahl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Ausgabe\Ausgabe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Verwaltung\DetailsProduktuebersicht.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
