@@ -89,6 +89,9 @@
     <Compile Include="Kalkulation\Boden.cs" />
     <Compile Include="Kalkulation\Ergebnis.cs" />
     <Compile Include="Kalkulation\Kalkulation.cs" />
+    <Compile Include="Kalkulation\KalkulationWindow.xaml.cs">
+      <DependentUpon>KalkulationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kalkulation\Raum.cs" />
     <Compile Include="Kalkulation\Wand.cs" />
     <Compile Include="Verwaltung\DetailsProduktuebersicht.xaml.cs">
@@ -117,6 +120,10 @@
       <DependentUpon>ZusatzproduktAuswahl.xaml</DependentUpon>
     </Compile>
     <Page Include="Ausgabe\Ausgabe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Kalkulation\KalkulationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
