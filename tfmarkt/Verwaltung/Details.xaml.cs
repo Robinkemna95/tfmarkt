@@ -78,14 +78,14 @@ namespace tfmarkt.Verwaltung
             {
                 this.tbVar3.Visibility = Visibility.Hidden;
 
-                this.lbVar1.Content = "Fläche (cm²)";
+                this.lbVar1.Content = "Fläche (m²)";
                 this.lbVar2.Content = "Gewicht (g)";
                 this.lbVar3.Visibility = Visibility.Hidden;
             }
             else if (this.produktTyp == typeof(Fliesenkleber) || this.produktTyp == typeof(Fugenmoertel))
             {
-                this.lbVar1.Content = "min Fläche (cm²)";
-                this.lbVar2.Content = "max Fläche (cm²)";
+                this.lbVar1.Content = "min Fläche (m²)";
+                this.lbVar2.Content = "max Fläche (m²)";
                 this.lbVar3.Content = "Gewicht (g)";                   
             }
         }
@@ -213,17 +213,23 @@ namespace tfmarkt.Verwaltung
             if(this.meinKatalog.artikelnummerVorhanden(this.tbArtikelnummer.Text, this.produktTyp) && this.art == Bearbeitung.istNeu)
             {
                 MessageBox.Show(this, "Eingegebene Artikelnummer ist bereits vorhanden in der Kategorie \"" + this.produktTyp.Name + "\".", "Fehler");
+                tbArtikelnummer.Focus();
+                tbArtikelnummer.SelectAll();
                 return;
             }
 
             if (!decimal.TryParse(this.tbPreis.Text, out preis))
             {
                 MessageBox.Show(this, "Der eingegebene Geldwert ist ungültig, bitte korrigieren!!!", "Fehler");
+                tbPreis.Focus();
+                tbPreis.SelectAll();
                 return;
             }
             else if (this.tbPreis.Text.Contains('.'))
             {
                 MessageBox.Show(this, "Der eingegebene Geldwert ist ungültig, als Trennzeichen muss ein \",\" verwendet werden!!!", "Fehler");
+                tbPreis.Focus();
+                tbPreis.SelectAll();
                 return;
             }
 
@@ -235,9 +241,18 @@ namespace tfmarkt.Verwaltung
                 artikelnummer = this.tbArtikelnummer.Text.Trim();
                 titel = this.tbTitel.Text.Trim();
                 beschreibung = this.tbBeschreibung.Text.Trim();
-                tbVar1 = int.Parse(this.tbVar1.Text);
-                tbVar2 = int.Parse(this.tbVar2.Text);
-                tbVar3 = this.tbVar3.IsVisible ? int.Parse(this.tbVar3.Text) : 0;
+
+                try
+                {
+                    tbVar1 = int.Parse(this.tbVar1.Text);
+                    tbVar2 = int.Parse(this.tbVar2.Text);
+                    tbVar3 = this.tbVar3.IsVisible ? int.Parse(this.tbVar3.Text) : 0;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(this, "Es sind nur numerische Zeichen in den Eingabefeldern für Länge/Breite/Fläche/Gewicht/Anzahl erlaubt!!!", "Fehler");
+                    return;
+                }
 
                 if (this.produktTyp == typeof(Tapetenrolle))
                 {
@@ -282,9 +297,18 @@ namespace tfmarkt.Verwaltung
                 artikelnummer = this.tbArtikelnummer.Text.Trim();
                 titel = this.tbTitel.Text.Trim();
                 beschreibung = this.tbBeschreibung.Text.Trim();
-                tbVar1 = int.Parse(this.tbVar1.Text);
-                tbVar2 = int.Parse(this.tbVar2.Text);
-                tbVar3 = this.tbVar3.IsVisible ? int.Parse(this.tbVar3.Text) : 0;
+
+                try
+                {
+                    tbVar1 = int.Parse(this.tbVar1.Text);
+                    tbVar2 = int.Parse(this.tbVar2.Text);
+                    tbVar3 = this.tbVar3.IsVisible ? int.Parse(this.tbVar3.Text) : 0;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(this, "Es sind nur numerische Zeichen in den Eingabefeldern für Länge/Breite/Fläche/Gewicht/Anzahl erlaubt!!!", "Fehler");
+                    return;
+                }                
 
                 // Prüfung ob die Artikelnummer geändert wurde, und wenn ja ob die neue
                 // Artikelnummer bereits vorhanden ist
@@ -294,6 +318,8 @@ namespace tfmarkt.Verwaltung
                     {
                         MessageBox.Show(this, "Produkt konnte dem Katalog nicht hinzugefügt werden!" +
                         "\nDie Artikelnummer ist bereits vorhanden, bitte eine freie Artikelnummer verwenden", "Artikelnummer vorhanden");
+                        tbArtikelnummer.Focus();
+                        tbArtikelnummer.SelectAll();
                         return;
                     }
                     else

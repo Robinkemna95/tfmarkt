@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using tfmarkt.Katalog;
+using tfmarkt.Verwaltung;
 using tfmarkt.Produktklassen;
+using tfmarkt.Katalog;
 
 namespace tfmarkt.Kalkulation
 {

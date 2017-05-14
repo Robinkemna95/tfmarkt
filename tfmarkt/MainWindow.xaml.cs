@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using tfmarkt.Produktklassen;
-using tfmarkt.Katalog;
-using tfmarkt.Daten;
 using tfmarkt.Verwaltung;
+using tfmarkt.Daten;
+using tfmarkt.Katalog;
 using tfmarkt.Kalkulation;
 
 namespace tfmarkt
@@ -40,10 +40,10 @@ namespace tfmarkt
             // Zusatzprodukte TEST
             //Fugenmoertel tp = new Fugenmoertel("004", "Mörtel", "Harter Mörtel", 18m, 0.2, 20, 40, false);
             //Fliesenkleber fk = new Fliesenkleber("005", "Kleber", "Super Kleber", 18m, 0.2, 20, 40, false);
-            Tapetenkleister fm = new Tapetenkleister("006", "Kleister", "Harter Mörtel", 18m, 200, 20, false);
+            //Tapetenkleister fm = new Tapetenkleister("006", "Kleister", "Harter Mörtel", 18m, 200, 20, false);
 
             // Produktkatalog laden TEST
-            meinKatalog.datenhandler.fuelleProduktkatalog(meinKatalog);
+            //meinKatalog.datenhandler.fuelleProduktkatalog(meinKatalog);
 
             //Tapetenrolle t3 = (Tapetenrolle)t1.Clone();
 
@@ -64,8 +64,8 @@ namespace tfmarkt
             XmlDatei xml = new XmlDatei();
 
             //lb1.Text = string.Format("Preis der/des {0} {1:C}\n", tp.produktName(), tp.preis);
-            lb1.Text += string.Format("{0}\n", meinKatalog);
-            lb1.Text += string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12));
+            lb1.AppendText(string.Format("{0}\n", meinKatalog));
+            lb1.AppendText(string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12)));
 
             lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //meinKatalog.datenhandler.sichereProduktkatalog(meinKatalog);
@@ -75,7 +75,7 @@ namespace tfmarkt
             testKalkulation.kalkuliere();
             foreach(Ergebnis ergebnis in testKalkulation.ergebnisse)
             {
-                lb1.AppendText(ergebnis.ToString());
+                lb1.AppendText(ergebnis.ToString() + "\n");
             }
         }
 
@@ -100,7 +100,23 @@ namespace tfmarkt
 
                 verwaltung.ShowDialog();
             }
-                
+            else
+            {
+                MessageBox.Show(this, "Das eingegebene Passwort für die Verwaltung war falsch!!!", "Falsches Passwort");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Produktuebersicht uebersicht;
+
+            lb1.AppendText("Anzeigen der Produktübersicht");
+            lb1.ScrollToEnd();
+
+            uebersicht = new Produktuebersicht(this.meinKatalog);
+            uebersicht.Owner = this;
+
+            uebersicht.ShowDialog();            
         }
     }
 }

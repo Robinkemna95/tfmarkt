@@ -88,7 +88,13 @@
     <Compile Include="Kalkulation\Kalkulation.cs" />
     <Compile Include="Kalkulation\Raum.cs" />
     <Compile Include="Kalkulation\Wand.cs" />
+    <Compile Include="Verwaltung\DetailsProduktuebersicht.xaml.cs">
+      <DependentUpon>DetailsProduktuebersicht.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Katalog\Produktkatalog.cs" />
+    <Compile Include="Verwaltung\Produktuebersicht.xaml.cs">
+      <DependentUpon>Produktuebersicht.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Produktklassen\Fliesenkleber.cs" />
     <Compile Include="Produktklassen\Fliesenpaket.cs" />
     <Compile Include="Produktklassen\Fugenmoertel.cs" />
@@ -107,6 +113,14 @@
     <Compile Include="Verwaltung\ZusatzproduktAuswahl.xaml.cs">
       <DependentUpon>ZusatzproduktAuswahl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Verwaltung\DetailsProduktuebersicht.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Verwaltung\Produktuebersicht.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
