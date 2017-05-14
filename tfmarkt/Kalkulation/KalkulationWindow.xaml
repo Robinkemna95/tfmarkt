@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         mc:Ignorable="d"
-        Title="KalkulationWindow" Height="500" Width="500">
+        Title="Kalkulation" Height="500" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -13,18 +13,19 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="8*"/>
+                <RowDefinition Height="6*"/>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!-- Grid Kopf -->
-            <Label Content="Räume" BorderBrush="Black" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" />
-
+            
+            <Label Content="Räume" BorderBrush="LightSalmon" BorderThickness="4, 4, 4, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" />
+           
             <!-- Grid Body -left- -->
 
-            <ListBox Name="lbRaeume" BorderBrush="LightSalmon" BorderThickness="4"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListBox Name="lbRaeume" BorderBrush="LightSalmon" BorderThickness="4, 0, 4, 4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                 <ListBoxItem Height="25" Selected="ShowDetail">
                     Raum
                 </ListBoxItem>

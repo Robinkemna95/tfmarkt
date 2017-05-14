@@ -48,9 +48,10 @@ namespace tfmarkt.Daten
             Type tyFliesen = pdKatalog.fliesen.GetType();
             Type tyZusatzprodukte;
 
-            this.dateiSchreiben(this.dateiTapeten, tyTapeten, pdKatalog.tapeten);
-            this.dateiSchreiben(this.dateiFliesen, tyFliesen, pdKatalog.fliesen);
+            erfolgreich = this.dateiSchreiben(this.dateiTapeten, tyTapeten, pdKatalog.tapeten);
+            erfolgreich = this.dateiSchreiben(this.dateiFliesen, tyFliesen, pdKatalog.fliesen);
 
+            this.loescheZusatzproduktDateien(pdKatalog);
             foreach (Zusatzprodukt z in pdKatalog.zusatzprodukte)
             {
                 String tmpDateiname;
@@ -58,12 +59,39 @@ namespace tfmarkt.Daten
 
                 tmpDateiname = this.dateiZusatzprodukte + "_" + tyZusatzprodukte.Name + ENDUNG;
 
-                this.dateiSchreiben(tmpDateiname, tyZusatzprodukte, z);
+                erfolgreich = this.dateiSchreiben(tmpDateiname, tyZusatzprodukte, z);
             }
 
-            erfolgreich = true;
-
             return erfolgreich;
+        }
+
+        // Löscht alle Dateien nacheinander, die von der Klasse Zusatzprodukt erben 
+        // Ist notwendig vor dem Sichern, weil die XML-Datei des Zusatzproduktes sonst 
+        // niemals gelöscht werden würde
+        private void loescheZusatzproduktDateien(Produktkatalog pdKatalog)
+        {
+             String tmpDateiname;
+
+            tmpDateiname = this.dateiZusatzprodukte + "_" + typeof(Tapetenkleister).Name + ENDUNG;
+
+            if (!this.dateiLoeschen(tmpDateiname))
+            {
+                System.Windows.MessageBox.Show(String.Format("Die Datei \"{0}\" konnte nicht gelöscht werden", tmpDateiname), "Datei löschen fehlgeschlagen");
+            }
+
+            tmpDateiname = this.dateiZusatzprodukte + "_" + typeof(Fliesenkleber).Name + ENDUNG;
+
+            if (!this.dateiLoeschen(tmpDateiname))
+            {
+                System.Windows.MessageBox.Show(String.Format("Die Datei \"{0}\" konnte nicht gelöscht werden", tmpDateiname), "Datei löschen fehlgeschlagen");
+            }
+
+            tmpDateiname = this.dateiZusatzprodukte + "_" + typeof(Fugenmoertel).Name + ENDUNG;
+
+            if (!this.dateiLoeschen(tmpDateiname))
+            {
+                System.Windows.MessageBox.Show(String.Format("Die Datei \"{0}\" konnte nicht gelöscht werden", tmpDateiname), "Datei löschen fehlgeschlagen");
+            }
         }
 
         // Laden des Produktkataloges aus XML Dateien
@@ -198,7 +226,7 @@ namespace tfmarkt.Daten
 
                     if (umbenannt)
                     {
-                        File.Delete(tempName);
+                        this.dateiLoeschen(tempName);
                     }
 
                     erfolgreich = true;
@@ -213,7 +241,25 @@ namespace tfmarkt.Daten
             return erfolgreich;
         }
 
-        // Methode zum Schreiben der Listen für Tapeten und Fliesen und der
+        // Methode um eine Datei mit dem angegebenen Namen zu löschen
+        private bool dateiLoeschen(String dateiname)
+        {
+            bool erfolgreich = false;
+
+            try
+            {
+                File.Delete(dateiname);
+
+                erfolgreich = true;
+            }
+            catch (Exception)
+            {
+            }
+            
+            return erfolgreich;
+        }
+
+        // Methode zum Einlesen der Listen für Tapeten und Fliesen und der
         // einzelnen Zusatzprodukte in die angegebene XML-Datei
         private T dateiLesen<T>(string dateiname, Type t)
         {
