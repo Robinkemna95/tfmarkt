@@ -55,7 +55,7 @@ namespace tfmarkt.Kalkulation
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(0));
             
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(2));
-
+            
             /* Testdaten Ende */
         }
 
