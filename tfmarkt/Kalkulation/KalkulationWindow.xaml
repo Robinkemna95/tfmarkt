@@ -40,7 +40,10 @@
                 <Label Grid.Column="0" Content="+" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
                 <Label Grid.Column="1" Content="-" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
             </Grid>
-            
+
+            <Label Content="Kalkulation" Grid.Row="3" MouseDown="Label_MouseDown_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+            <Label Content="Schließen" Grid.Row="4" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
 
         <!-- Grid Body -right- -->

@@ -152,15 +152,6 @@ namespace tfmarkt
                 return;
             }
 
-            // Hie wird eine Kalkulation vorbereitet und die Ausgabe formatiert und angezeigt
-            /*Kalkulation.Kalkulation testKalkulation = new Kalkulation.Kalkulation(0, meinKatalog);
-            testKalkulation.kalkuliere();
-
-            Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(testKalkulation.ergebnisse);
-            ausgabe.Owner = this;
-            ausgabe.ausgabeFormatieren();
-            ausgabe.ShowDialog();*/
-
             KalkulationWindow window = new KalkulationWindow(this.meinKatalog);
             window.Owner = this;
             window.ShowDialog();
