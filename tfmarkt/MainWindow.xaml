@@ -20,11 +20,11 @@
                     <RowDefinition Height="50*" />
                     <RowDefinition Height="50*" />
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Content="Verwaltung" Click="Button_Click"  />
+                <Button Grid.Row="0" Content="Verwaltung" Click="Button_Click" />
                 <Button Grid.Row="1" Content="Produktübersicht" Click="Button_Click_1" />
             </Grid>
         </Grid>
-        
+
 
 
         <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="213" VerticalAlignment="Top" Width="507" >
