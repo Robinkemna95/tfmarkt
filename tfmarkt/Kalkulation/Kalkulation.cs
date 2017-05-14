@@ -44,7 +44,7 @@ namespace tfmarkt.Kalkulation
                 wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T003");
                 waende.Add(wand);
             }
-            for (int i = 4; i > 0; i--)
+            for (int i = 8; i > 0; i--)
             {
                 Wand wand = new Wand(500, 250);
                 wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T004");
@@ -221,7 +221,7 @@ namespace tfmarkt.Kalkulation
         protected Ergebnis berechneTapete(int flaeche, Tapetenrolle produkt)
         {
             Ergebnis ergebnis = null;
-            int anzahl = (int)Math.Ceiling(flaeche/(produkt.getFlaeche()/10000f));
+            int anzahl = (int)Math.Ceiling(1f * flaeche/(produkt.getFlaeche())); ///10000f));
             decimal preis = anzahl * produkt.preis;
 
             ergebnis = new Ergebnis(flaeche, anzahl, preis, produkt);

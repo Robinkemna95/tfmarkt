@@ -74,25 +74,28 @@ namespace tfmarkt.Ausgabe
             {
                 if (!kategorie.Equals(ergebnis.produkt.produktName()))
                 {
-                    if (ergebnis.produkt.GetType() == typeof(Tapetenkleister) 
-                        || ergebnis.produkt.GetType() == typeof(Fliesenkleber)
-                        || ergebnis.produkt.GetType() == typeof(Fugenmoertel))
-                    {
-                        if (kategorie.Equals(typeof(Zusatzprodukt).Name))
-                        {
-                            produktNameAusgeben = false;
-                        }
-                        else
-                        {
-                            kategorie = typeof(Zusatzprodukt).Name;
-                            produktNameAusgeben = true;
-                        }
-                    }
-                    else
-                    {
-                        kategorie = ergebnis.produkt.produktName();
-                        produktNameAusgeben = true;
-                    }
+                    kategorie = ergebnis.produkt.produktName();
+                    produktNameAusgeben = true;
+
+                    //if (ergebnis.produkt.GetType() == typeof(Tapetenkleister) 
+                    //    || ergebnis.produkt.GetType() == typeof(Fliesenkleber)
+                    //    || ergebnis.produkt.GetType() == typeof(Fugenmoertel))
+                    //{
+                    //    if (kategorie.Equals(typeof(Zusatzprodukt).Name))
+                    //    {
+                    //        produktNameAusgeben = false;
+                    //    }
+                    //    else
+                    //    {
+                    //        kategorie = typeof(Zusatzprodukt).Name;
+                    //        produktNameAusgeben = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    kategorie = ergebnis.produkt.produktName();
+                    //    produktNameAusgeben = true;
+                    //}
                 }
                 else
                 {
@@ -105,7 +108,7 @@ namespace tfmarkt.Ausgabe
                 preisNetto = Convert.ToDecimal(ergebnis.preis / 1.19m);
                 preisBrutto = ergebnis.preis;
 
-                lbAusgabe.Items.Add(String.Format("{0,-5}{1,-15}{2,-35}{3,-8}{4,12:C}{5,18:C}{6,15:C}", cnt++, produktNameAusgeben ? kategorie : "", name, anzahl, einzelpreisNetto, preisNetto, preisBrutto));
+                lbAusgabe.Items.Add(String.Format("{0,-5}{1,-16}{2,-30}{3,8}{4,15:C}{5,18:C}{6,15:C}", cnt++, produktNameAusgeben ? kategorie : "", name, anzahl, einzelpreisNetto, preisNetto, preisBrutto));
                 gesamtbetrag += ergebnis.preis;
             }
 
@@ -122,7 +125,7 @@ namespace tfmarkt.Ausgabe
         {
             ListBoxItem lbiKopfzeile = new ListBoxItem();
 
-            String kopfzeile = String.Format("{0,-5}{1,-15}{2,-34}{3,-8}{4,15}{5,15}{6,15}", "Pos.", "Kategorie", "Name", "Menge", "Einzelpr. (Netto)", "Preis (Netto)", "Preis (Brutto)");
+            String kopfzeile = String.Format("{0,-5}{1,-16}{2,-34}{3,-8}{4,15}{5,15}{6,15}", "Pos.", "Produkt", "Name", "Menge", "Einzelpr. (Netto)", "Preis (Netto)", "Preis (Brutto)");
             String unterstrich = new String('-', 110);
 
             lbiKopfzeile.FontStyle = FontStyles.Oblique;
@@ -136,7 +139,7 @@ namespace tfmarkt.Ausgabe
         // des Gesamtbetrags
         private void fussZeileErzeugen(decimal gesamtbetrag)
         {
-            String fusszeile = String.Format("{0,94}{1,14:C}", "Gesamtbetrag: ", gesamtbetrag);
+            String fusszeile = String.Format("{0,93}{1,14:C}", "Gesamtbetrag: ", gesamtbetrag);
             String unterstrich = new String('-', 110);
 
             this.lbAusgabe.Items.Add(unterstrich);
