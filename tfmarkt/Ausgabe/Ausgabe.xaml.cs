@@ -54,9 +54,11 @@ namespace tfmarkt.Ausgabe
         {
             decimal gesamtbetrag = 0;
             int cnt = 1;
-            bool produktNameAusgeben = false;
+            bool produktNameAusgeben = false,
+                 produktFleacheAusgeben = false;
             String kategorie = "",
-                   name;
+                   name,
+                   flaeche; 
             int anzahl;
             decimal einzelpreisNetto,
                     preisNetto,
@@ -74,7 +76,7 @@ namespace tfmarkt.Ausgabe
             {
                 if (!kategorie.Equals(ergebnis.produkt.produktName()))
                 {
-                    kategorie = ergebnis.produkt.produktName();
+                    kategorie = umlauteAnpassen(ergebnis.produkt.produktName());
                     produktNameAusgeben = true;
 
                     //if (ergebnis.produkt.GetType() == typeof(Tapetenkleister) 
@@ -102,13 +104,23 @@ namespace tfmarkt.Ausgabe
                     produktNameAusgeben = false;
                 }
 
+                if (ergebnis.produkt.GetType() == typeof(Tapetenrolle) || ergebnis.produkt.GetType() == typeof(Fliesenpaket))
+                {
+                    produktFleacheAusgeben = true;
+                }
+                else
+                {
+                    produktFleacheAusgeben = false;
+                }
+
                 name = ergebnis.produkt.titel;
+                flaeche = Math.Round(ergebnis.flaecheGesamt * 1f / 10000, 2).ToString("0.00");
                 anzahl = ergebnis.anzahlProdukt;
                 einzelpreisNetto = Convert.ToDecimal(ergebnis.produkt.preis / 1.19m);
                 preisNetto = Convert.ToDecimal(ergebnis.preis / 1.19m);
                 preisBrutto = ergebnis.preis;
 
-                lbAusgabe.Items.Add(String.Format("{0,-5}{1,-16}{2,-30}{3,8}{4,15:C}{5,18:C}{6,15:C}", cnt++, produktNameAusgeben ? kategorie : "", name, anzahl, einzelpreisNetto, preisNetto, preisBrutto));
+                lbAusgabe.Items.Add(String.Format("{0,-5}{1,-16}{2,-30}{3,10}{4,8}{5,15:C}{6,18:C}{7,15:C}", cnt++, produktNameAusgeben ? kategorie : "", name, produktFleacheAusgeben ? flaeche : "-", anzahl, einzelpreisNetto, preisNetto, preisBrutto));
                 gesamtbetrag += ergebnis.preis;
             }
 
@@ -125,8 +137,8 @@ namespace tfmarkt.Ausgabe
         {
             ListBoxItem lbiKopfzeile = new ListBoxItem();
 
-            String kopfzeile = String.Format("{0,-5}{1,-16}{2,-34}{3,-8}{4,15}{5,15}{6,15}", "Pos.", "Produkt", "Name", "Menge", "Einzelpr. (Netto)", "Preis (Netto)", "Preis (Brutto)");
-            String unterstrich = new String('-', 110);
+            String kopfzeile = String.Format("{0,-5}{1,-16}{2,-34}{3,-10}{4,-8}{5,15}{6,15}{7,15}", "Pos.", "Produkt", "Name", "Fläche", "Menge", "Einzelpr. (Netto)", "Preis (Netto)", "Preis (Brutto)");
+            String unterstrich = new String('-', 120);
 
             lbiKopfzeile.FontStyle = FontStyles.Oblique;
             lbiKopfzeile.Content = kopfzeile;
@@ -139,12 +151,25 @@ namespace tfmarkt.Ausgabe
         // des Gesamtbetrags
         private void fussZeileErzeugen(decimal gesamtbetrag)
         {
-            String fusszeile = String.Format("{0,93}{1,14:C}", "Gesamtbetrag: ", gesamtbetrag);
-            String unterstrich = new String('-', 110);
+            String fusszeile = String.Format("{0,103}{1,14:C}", "Gesamtbetrag: ", gesamtbetrag);
+            String unterstrich = new String('-', 120);
 
             this.lbAusgabe.Items.Add(unterstrich);
             this.lbAusgabe.Items.Add(fusszeile);
 
+        }
+
+        // Wandelt Umlaute wieder zurück in die deutsche Form
+        private string umlauteAnpassen(string name)
+        {
+            name = name.Replace("ue", "ü");
+            name = name.Replace("ae", "ä");
+            name = name.Replace("oe", "ö");
+            name = name.Replace("Ue", "Ü");
+            name = name.Replace("Ae", "A");
+            name = name.Replace("Oe", "Ö");
+
+            return name;
         }
     }
 }

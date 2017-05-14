@@ -34,19 +34,19 @@ namespace tfmarkt.Kalkulation
             List<Wand> waende = new List<Wand>();
             for (int i= 4; i > 0; i--)
             {
-                Wand wand = new Wand(250, 400);
+                Wand wand = new Wand(250, 249);
                 wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T001");
                 waende.Add(wand);
             }
             for (int i = 4; i > 0; i--)
             {
-                Wand wand = new Wand(250, 400);
+                Wand wand = new Wand(198, 400);
                 wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T003");
                 waende.Add(wand);
             }
             for (int i = 8; i > 0; i--)
             {
-                Wand wand = new Wand(500, 250);
+                Wand wand = new Wand(278, 250);
                 wand.tapete = (Tapetenrolle)produktkatalog.getProdukt("T004");
                 waende.Add(wand);
             }
@@ -54,15 +54,15 @@ namespace tfmarkt.Kalkulation
 
             List<Boden> boeden = new List<Boden>();
 
-            Boden boden = new Boden(500, 400);
+            Boden boden = new Boden(302, 417);
             boden.fliesen = (Fliesenpaket)produktkatalog.getProdukt("F003");
             boeden.Add(boden);
 
-            Boden boden1 = new Boden(500, 500);
+            Boden boden1 = new Boden(469, 377);
             boden1.fliesen = (Fliesenpaket)produktkatalog.getProdukt("F003");
             boeden.Add(boden1);
 
-            boden1 = new Boden(250, 380);
+            boden1 = new Boden(2980, 3258);
             boden1.fliesen = (Fliesenpaket)produktkatalog.getProdukt("F004");
             boeden.Add(boden1);
 
@@ -221,7 +221,7 @@ namespace tfmarkt.Kalkulation
         protected Ergebnis berechneTapete(int flaeche, Tapetenrolle produkt)
         {
             Ergebnis ergebnis = null;
-            int anzahl = (int)Math.Ceiling(1f * flaeche/(produkt.getFlaeche())); ///10000f));
+            int anzahl = (int)Math.Ceiling(1f * flaeche/(produkt.getFlaeche())); //10000f));
             decimal preis = anzahl * produkt.preis;
 
             ergebnis = new Ergebnis(flaeche, anzahl, preis, produkt);
