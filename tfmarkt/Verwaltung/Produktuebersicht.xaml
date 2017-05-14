@@ -42,6 +42,7 @@
                     <Label Name="lbZusatzprodukt" Grid.Column="1" Background="white" />
                 </Grid>
             </ListBox>
+            <Label Content="Schließen" Grid.Row="1" MouseDown="Label_MouseDown" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
         
         <Grid Grid.Column="1">            

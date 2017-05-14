@@ -13,14 +13,14 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="8*"/>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!-- Grid Kopf -->
-            <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0">Räume</Label>
+            <Label Content="Räume" BorderBrush="Black" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" />
 
             <!-- Grid Body -left- -->
 
