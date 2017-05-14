@@ -69,14 +69,6 @@ namespace tfmarkt
 
             lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //meinKatalog.datenhandler.sichereProduktkatalog(meinKatalog);
-
-            Kalkulation.Kalkulation testKalkulation = new Kalkulation.Kalkulation(0,meinKatalog);
-
-            testKalkulation.kalkuliere();
-            foreach(Ergebnis ergebnis in testKalkulation.ergebnisse)
-            {
-                lb1.AppendText(ergebnis.ToString() + "\n");
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -117,6 +109,18 @@ namespace tfmarkt
             uebersicht.Owner = this;
 
             uebersicht.ShowDialog();            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            // Hie wird eine Kalkulation vorbereitet und die Ausgabe formatiert und angezeigt
+            Kalkulation.Kalkulation testKalkulation = new Kalkulation.Kalkulation(0, meinKatalog);
+            testKalkulation.kalkuliere();
+
+            Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(testKalkulation.ergebnisse);
+            ausgabe.Owner = this;
+            ausgabe.ausgabeFormatieren();
+            ausgabe.ShowDialog();
         }
     }
 }

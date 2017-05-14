@@ -7,7 +7,7 @@ using tfmarkt.Produktklassen;
 
 namespace tfmarkt.Kalkulation
 {
-    class Ergebnis
+    public class Ergebnis
     {
         public int flaecheGesamt { get; set; }
         public int anzahlProdukt { get; set; }
