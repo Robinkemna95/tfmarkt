@@ -252,6 +252,8 @@ namespace tfmarkt.Verwaltung
                 MessageBox.Show(this, "Nichts ausgewählt zum Löschen.");
         }
 
+        // Beim Doppelklick auf ein Element im DataGrid öffnet sich die Detailseite
+        // des Produktes
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             DataGrid tmpGrid = (DataGrid)sender;
@@ -264,6 +266,7 @@ namespace tfmarkt.Verwaltung
             btnBearbeiten_Click(null, null);
         }
 
+        // Aktion zum Schließen des Fensters
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton != MouseButton.Left)
@@ -274,7 +277,8 @@ namespace tfmarkt.Verwaltung
             this.Close();
         }
         
-        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        // Hervorheben eines Labels, wenn die Maus darüber ist
+        private void label_highlightMouseEnter(object sender, MouseEventArgs e)
         {
             Label tmp = (Label)sender;
 
@@ -282,7 +286,8 @@ namespace tfmarkt.Verwaltung
             tmp.Background = Brushes.Black;
         }
 
-        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        // Zur+cksetzen eines Labels, wenn die Maus nicht mehr darüber ist
+        private void label_highlightMouseLeave(object sender, MouseEventArgs e)
         {
             Label tmp = (Label)sender;
 

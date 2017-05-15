@@ -232,7 +232,8 @@ namespace tfmarkt.Verwaltung
             this.Close();
         }
 
-        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        // Hervorheben eines Labels, wenn die Maus darüber ist
+        private void label_highlightMouseEnter(object sender, MouseEventArgs e)
         {
             Label tmp = (Label)sender;
 
@@ -240,7 +241,8 @@ namespace tfmarkt.Verwaltung
             tmp.Background = Brushes.Black;
         }
 
-        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        // Zur+cksetzen eines Labels, wenn die Maus nicht mehr darüber ist
+        private void label_highlightMouseLeave(object sender, MouseEventArgs e)
         {
             Label tmp = (Label)sender;
 
