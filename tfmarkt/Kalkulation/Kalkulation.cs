@@ -31,7 +31,7 @@ namespace tfmarkt.Kalkulation
             }
 
             /* Testdaten */
-            List<Wand> waende = new List<Wand>();
+            /*List<Wand> waende = new List<Wand>();
             for (int i= 4; i > 0; i--)
             {
                 Wand wand = new Wand(250, 249);
@@ -71,7 +71,7 @@ namespace tfmarkt.Kalkulation
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(0));
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(1));
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(2));
-            
+            */
             /* Testdaten Ende */
         }
 

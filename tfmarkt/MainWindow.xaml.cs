@@ -27,11 +27,11 @@ namespace tfmarkt
     public partial class MainWindow : Window
     {
 
-        private string verwaltungImage = Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
+        private string verwaltungImage = Convert.ToString(System.IO.Path.GetFullPath("../../images/Verwaltung.png"));
 
-        private string kalkulationImage = Convert.ToString(System.IO.Path.GetFullPath("images/Kalkulieren.png"));
+        private string kalkulationImage = Convert.ToString(System.IO.Path.GetFullPath("../../images/Kalkulieren.png"));
 
-        private string uebersichtImage = Convert.ToString(System.IO.Path.GetFullPath("images/Uebersicht.png"));
+        private string uebersichtImage = Convert.ToString(System.IO.Path.GetFullPath("../../images/Uebersicht.png"));
 
         public Produktkatalog meinKatalog { get; set; }
 
