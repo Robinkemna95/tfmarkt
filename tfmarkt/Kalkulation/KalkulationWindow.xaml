@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         mc:Ignorable="d"
-        Title="Kalkulation" Height="500" Width="500" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow">
+        Title="Kalkulation" Height="500" Width="700" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize" DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -20,13 +20,13 @@
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!-- Grid Kopf -->
-            
+
             <Label Content="Räume" BorderBrush="LightSalmon" BorderThickness="4, 4, 4, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" />
-           
+
             <!-- Grid Body -left- -->
 
             <ListBox Name="lbRaeume" SelectionChanged="selectionChanged" BorderBrush="LightSalmon" BorderThickness="4, 0, 4, 4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-                
+
             </ListBox>
 
 
@@ -46,8 +46,29 @@
         </Grid>
 
         <!-- Grid Body -right- -->
-        <Grid Grid.Column="1" Grid.Row="1">
-            <DataGrid Name="dataGrid" IsReadOnly="True" CanUserReorderColumns="False" FontSize="22" SelectionMode="Single" />
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Grid Header -->
+            <Label Grid.Row="0" Name="RaumUeberschrift" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" BorderThickness="0,0,0,4" BorderBrush="#FFC1C1C1">Bitte legen Sie einen Raum an, oder wählen einen aus der Liste.</Label>
+
+            <!-- Grid Body -->
+            <Grid Grid.Row="1" Name="RaumContainer">
+                <Grid.Background>
+                    <ImageBrush Stretch="None"/>
+                </Grid.Background>
+                <Label Name="LabelWaende" FontSize="16" Margin="10,10,-10,-10">Wände :</Label>
+                <Label Name="Böden" FontSize="16" Margin="10,225,-10,-225">Böden :</Label>
+
+                <Button Name="AddBoden" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="10,372,385,10" Click="AddItem" >Boden hinzufügen</Button>
+                <Button Name="AddWand" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="175,372,230,10" Click="AddItem" >Wand hinzufügen</Button>
+                <DataGrid Name="WaendeGrid" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="180" Width="535" IsReadOnly="True"/>
+                <DataGrid Name="BoedenGrid" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Height="100" Width="535" IsReadOnly="True"/>
+            </Grid>
         </Grid>
+        <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
