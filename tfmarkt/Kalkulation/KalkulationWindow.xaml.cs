@@ -66,7 +66,7 @@ namespace tfmarkt.Kalkulation
             this.Close();
         }
 
-        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        private void Label_HoverIn(object sender, MouseEventArgs e)
         {
             Label tmp = (Label)sender;
 
@@ -74,7 +74,7 @@ namespace tfmarkt.Kalkulation
             tmp.Background = Brushes.Black;
         }
 
-        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        private void Label_HoverOut(object sender, MouseEventArgs e)
         {
             Label tmp = (Label)sender;
 
@@ -92,6 +92,25 @@ namespace tfmarkt.Kalkulation
             ausgabe.Owner = this;
             ausgabe.ausgabeFormatieren();
             ausgabe.ShowDialog();
+        }
+
+        private void addNewRoom(object sender, MouseButtonEventArgs e)
+        {
+            RaumName raumName = new RaumName(this);
+            raumName.Owner = this;
+            raumName.ShowDialog();
+        }
+
+        private void selectionChanged(object sender, EventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+
+            Raum selectedRaum = (Raum)listBox.SelectedItem;
+
+            if (selectedRaum != null)
+            {
+                MessageBox.Show(selectedRaum.name);
+            }
         }
     }
 }

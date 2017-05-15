@@ -93,6 +93,9 @@
       <DependentUpon>KalkulationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Kalkulation\Raum.cs" />
+    <Compile Include="Kalkulation\RaumName.xaml.cs">
+      <DependentUpon>RaumName.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kalkulation\Wand.cs" />
     <Compile Include="Verwaltung\DetailsProduktuebersicht.xaml.cs">
       <DependentUpon>DetailsProduktuebersicht.xaml</DependentUpon>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Kalkulation\KalkulationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Kalkulation\RaumName.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         mc:Ignorable="d"
-        Title="Kalkulation" Height="500" Width="500">
+        Title="Kalkulation" Height="500" Width="500" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -25,10 +25,8 @@
            
             <!-- Grid Body -left- -->
 
-            <ListBox Name="lbRaeume" BorderBrush="LightSalmon" BorderThickness="4, 0, 4, 4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-                <ListBoxItem Height="25" Selected="ShowDetail">
-                    Raum
-                </ListBoxItem>
+            <ListBox Name="lbRaeume" SelectionChanged="selectionChanged" BorderBrush="LightSalmon" BorderThickness="4, 0, 4, 4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+                
             </ListBox>
 
 
@@ -38,13 +36,13 @@
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Content="+" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
-                <Label Grid.Column="1" Content="-" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
+                <Label Grid.Column="0" Content="+" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22" MouseDown="addNewRoom"/>
+                <Label Grid.Column="1" Content="-" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
             </Grid>
 
-            <Label Content="Kalkulation" Grid.Row="3" MouseDown="Label_MouseDown_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Kalkulation" Grid.Row="3" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
-            <Label Content="Schließen" Grid.Row="4" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Schließen" Grid.Row="4" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
 
         <!-- Grid Body -right- -->
