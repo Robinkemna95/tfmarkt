@@ -67,6 +67,7 @@ namespace tfmarkt.Kalkulation
             boeden.Add(boden1);
 
             this.raeume.Add(new Raum("erster Raum", waende, boeden));
+            this.raeume.Add(new Raum("zweiter Raum", waende, boeden));
 
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(0));
             this.zusatzprodukte.Add(produktkatalog.getZusatzprodukt(1));

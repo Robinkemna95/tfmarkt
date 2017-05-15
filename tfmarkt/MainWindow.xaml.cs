@@ -170,5 +170,25 @@ namespace tfmarkt
 
             tmp.Background.Opacity = 1;
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(e.Key == Key.D && Keyboard.IsKeyDown(Key.LeftCtrl)))
+            {
+                return;
+            }
+
+            if (lb1.Visibility != Visibility.Visible)
+            {
+                lb1.Visibility = Visibility.Visible;
+                Grid.SetRowSpan(gridTFMarkt, 1);
+            }
+            else 
+            {
+                lb1.Visibility = Visibility.Hidden;
+                Grid.SetRowSpan(gridTFMarkt, 2);
+            }
+            
+        }
     }
 }

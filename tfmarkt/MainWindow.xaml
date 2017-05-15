@@ -1,22 +1,15 @@
 ﻿<Window x:Class="tfmarkt.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TF Markt" Height="660" Width="904" ResizeMode="NoResize">
+        Title="TF Markt" Height="500" Width="1000" ResizeMode="NoResize" KeyDown="Window_KeyDown" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*" />
             <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
-        <TextBox Name="lb1" Grid.Row="1" Text="Hallo Welt" MaxWidth="{Binding ElementName=Grid, Path=ActualWidth}" FontSize="16" TextWrapping="Wrap"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
+        <TextBox Name="lb1" Visibility="Hidden" Grid.Row="1" Text="Hallo Welt" MaxWidth="{Binding ElementName=Grid, Path=ActualWidth}" FontSize="16" TextWrapping="Wrap"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" />
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="80*"/>
-                <ColumnDefinition Width="30*"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <Grid Grid.Column="1">
+        <Grid Name="gridTFMarkt" Grid.Column="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="33*"/>
                 <ColumnDefinition Width="33*"/>
