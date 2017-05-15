@@ -1,0 +1,11 @@
+﻿<Window x:Class="tfmarkt.Kalkulation.RaumName"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RaumName" Height="83.583" Width="382.089" WindowStyle="None" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Label Content="Raumname :" Margin="64,10,216,36"></Label>
+        <TextBox Name="RaumnameInput" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Raumname" VerticalAlignment="Top" Width="189" Margin="163,10,0,0"/>
+        <Button Content="Abbrechen" Margin="33,45,241,5" Click="CloseWindow"/>
+        <Button Content="Weiter" Margin="208,45,66,5" Click="ContinueCreation"/>
+    </Grid>
+</Window>

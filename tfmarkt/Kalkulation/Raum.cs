@@ -12,7 +12,7 @@ namespace tfmarkt.Kalkulation
         public List<Wand> waende { get; set; }
         public string name { get; set; }
 
-        public Raum(string name = "Raum") : this(name, null, null) // Ist nur da um zu zeigen dass wir das können! (╯°□°）╯︵ ┻━┻)
+        public Raum(string name = "Raum_1") : this(name, null, null) // Ist nur da um zu zeigen dass wir das können! (╯°□°）╯︵ ┻━┻)
         {
 
         }
