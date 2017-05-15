@@ -21,11 +21,24 @@ namespace tfmarkt.Kalkulation
     /// </summary>
     public partial class KalkulationWindow : Window
     {
+        public ImageBrush roomIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("../../images/RoomIcon.png")))));
+        public ImageBrush addIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("../../images/add.png")))));
+
         private Produktkatalog katalog;
         public KalkulationWindow(Produktkatalog katalog)
         {
             InitializeComponent();
             this.katalog = katalog;
+            this.roomIcon.Stretch = Stretch.None;
+            this.roomIcon.Opacity = 0.5;
+            lbRaeume.Background = this.roomIcon;
+
+            this.addIcon.Stretch = Stretch.None;
+            this.addIcon.AlignmentX = AlignmentX.Right;
+            this.addIcon.AlignmentY = AlignmentY.Center;
+            AddBoden.Background = this.addIcon;
+            AddWand.Background = this.addIcon;
+            
         }
 
         private void ShowDetail(object sender, RoutedEventArgs e)
@@ -109,8 +122,18 @@ namespace tfmarkt.Kalkulation
 
             if (selectedRaum != null)
             {
-                MessageBox.Show(selectedRaum.name);
+                RaumUeberschrift.Content = "Sie haben \""+selectedRaum.name+"\" ausgewählt";
+                WaendeGrid.ItemsSource = selectedRaum.waende;
+                BoedenGrid.ItemsSource = selectedRaum.boeden;
             }
+        }
+
+        private void AddItem(object sender, RoutedEventArgs e)
+        {
+            Button addButton = (Button)sender;
+            AddItem item = new AddItem(addButton.Name);
+            item.Owner = this;
+            item.ShowDialog();
         }
     }
 }
