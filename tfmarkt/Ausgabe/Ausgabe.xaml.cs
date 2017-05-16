@@ -25,6 +25,10 @@ namespace tfmarkt.Ausgabe
         public List<Ergebnis> ergebnisse { get; set; }
         private DateTime erzeugungsDatum;
 
+        private string normal = @"( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°)";
+        private string froehlich = @"¯\_(͡° ͜ʖ ͡°)_/¯ ¯\_(͡° ͜ʖ ͡°)_/¯ ¯\_(͡° ͜ʖ ͡°)_/¯";
+        private string traurig = @"( ͠° ͟ʖ ͡°) ( ͠° ͟ʖ ͡°) ( ͠° ͟ʖ ͡°)";
+
         // Konstruktor der Klasse Ausgabe
         public Ausgabe(List<Ergebnis> ergebnisse)
         {
@@ -128,7 +132,8 @@ namespace tfmarkt.Ausgabe
             this.fussZeileErzeugen(gesamtbetrag);
 
             this.leerzeilenEinfuegen(3);
-            this.lbAusgabe.Items.Add("Danke für Ihr Vertrauen in uns...Ihr tfMarkt Team!!! ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°) ( ͡° ͜ʖ ͡°)");
+
+            this.lbAusgabe.Items.Add("Danke für Ihr Vertrauen in uns...Ihr tfMarkt Team!!! " + (gesamtbetrag > 100 ? gesamtbetrag > 500 ? froehlich : normal : traurig));
         }
 
         // Die statische Kopfzeile wird generiert mit den Überschriften

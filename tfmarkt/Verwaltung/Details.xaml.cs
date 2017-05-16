@@ -70,23 +70,23 @@ namespace tfmarkt.Verwaltung
             else if (this.produktTyp == typeof(Fliesenpaket))
             {
 
-                this.lbVar1.Content = "Laenge (cm)";
-                this.lbVar2.Content = "Breite (cm)";
-                this.lbVar3.Content = "Anzahl (stk)";
+                this.lbVar1.Content = "Laenge (cm) :";
+                this.lbVar2.Content = "Breite (cm) :";
+                this.lbVar3.Content = "Anzahl (stk) :";
             }
             else if(this.produktTyp == typeof(Tapetenkleister))
             {
                 this.tbVar3.Visibility = Visibility.Hidden;
 
-                this.lbVar1.Content = "Fläche (m²)";
-                this.lbVar2.Content = "Gewicht (g)";
+                this.lbVar1.Content = "Fläche (m²) :";
+                this.lbVar2.Content = "Gewicht (g) :";
                 this.lbVar3.Visibility = Visibility.Hidden;
             }
             else if (this.produktTyp == typeof(Fliesenkleber) || this.produktTyp == typeof(Fugenmoertel))
             {
-                this.lbVar1.Content = "min Fläche (m²)";
-                this.lbVar2.Content = "max Fläche (m²)";
-                this.lbVar3.Content = "Gewicht (g)";                   
+                this.lbVar1.Content = "min Fläche (m²) :";
+                this.lbVar2.Content = "max Fläche (m²) :";
+                this.lbVar3.Content = "Gewicht (g) :";                   
             }
         }
 
