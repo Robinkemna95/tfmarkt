@@ -100,6 +100,10 @@ namespace tfmarkt.Kalkulation
 
         private void Kalkuliere(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
             if (lbRaeume.Items.Count == 0)
             {
                 MessageBox.Show(this, "Bitte zuerst mindestens einen Raum anlegen", "Raum anlegen");
@@ -138,24 +142,14 @@ namespace tfmarkt.Kalkulation
 
         private void addNewRoom(object sender, MouseButtonEventArgs e)
         {
+            if(e.ChangedButton != MouseButton.Left){
+                return;
+            }
             RaumName raumName = new RaumName(this);
             raumName.Owner = this;
             raumName.ShowDialog();
         }
 
-        private void selectionChanged(object sender, EventArgs e)
-        {
-            ListBox listBox = (ListBox)sender;
-
-            Raum selectedRaum = (Raum)listBox.SelectedItem;
-
-            if (selectedRaum != null)
-            {
-                RaumUeberschrift.Content = "Sie haben \""+selectedRaum.name+"\" ausgewählt";
-                WaendeGrid.ItemsSource = selectedRaum.waende;
-                BoedenGrid.ItemsSource = selectedRaum.boeden;
-            }
-        }
 
         private void AddItem(object sender, RoutedEventArgs e)
         {
@@ -173,6 +167,10 @@ namespace tfmarkt.Kalkulation
 
         private void removeSelectedItem(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
             if (lbRaeume.Items.Count > 0)
             {
                 Raum selectedRaum = (Raum)lbRaeume.SelectedItem;
@@ -197,12 +195,22 @@ namespace tfmarkt.Kalkulation
 
         private void selectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ListBox listBox = (ListBox)sender;
+
+            Raum selectedRaum = (Raum)listBox.SelectedItem;
+
+            if (selectedRaum != null)
+            {
+                RaumUeberschrift.Content = "Sie haben \"" + selectedRaum.name + "\" ausgewählt";
+                WaendeGrid.ItemsSource = selectedRaum.waende;
+                BoedenGrid.ItemsSource = selectedRaum.boeden;
+            }
             this.updateGrids();
         }
 
         public void updateGrids()
         {
-            if(lbRaeume.Items.Count > 0)
+            if(lbRaeume.Items.Count > 0 && lbRaeume.SelectedItem != null)
             {
                 BoedenGrid.ItemsSource = null;
                 WaendeGrid.ItemsSource = null;
@@ -219,6 +227,30 @@ namespace tfmarkt.Kalkulation
         private void deleteKalkulation(object sender, EventArgs e)
         {
             ((MainWindow)this.Owner).resetKalkulation();
+        }
+
+        private void deleteWand(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete)
+            {
+                if(MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie die ausgewählte Wand löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
+                {
+                    ((Raum)lbRaeume.SelectedItem).loescheWand((Wand)WaendeGrid.SelectedItem);
+                    this.updateGrids();
+                }
+            }
+        }
+
+        private void deleteBoden(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Boden löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
+                {
+                    ((Raum)lbRaeume.SelectedItem).loescheBoden((Boden)BoedenGrid.SelectedItem);
+                    this.updateGrids();
+                }   
+            }
         }
     }
 }

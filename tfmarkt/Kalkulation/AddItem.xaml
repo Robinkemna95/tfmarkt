@@ -27,10 +27,11 @@
         <Label Grid.Column="0" Grid.Row="2" Content="Produkt :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <Label Name="Anzahl" Content="Anzahl :" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
         <!-- Grid Right -->
-        <TextBox x:Name="Laenge" Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="Breite" Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="ComboBoxProdukte" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
+        <TextBox Name="Laenge" Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center" PreviewTextInput="validateInt"/>
+        <TextBox Name="Breite" Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center" PreviewTextInput="validateInt"/>
+        <ComboBox Grid.Column="1" Grid.Row="2" Name="ComboBoxProdukte" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
         <ComboBox x:Name="ComboBoxAnzahl" Grid.Column="1" Grid.Row="3" Margin="5"/>
+      
         <!-- Grid Seperator -->
         <Separator Grid.ColumnSpan="2" Grid.Row="4"/>
 
