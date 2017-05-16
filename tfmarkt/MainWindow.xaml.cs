@@ -29,11 +29,11 @@ namespace tfmarkt
 
         private Kalkulation.Kalkulation kalkulation = null;
         
-        private string verwaltungImage = Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
+        /*private string verwaltungImage = Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
 
         private string kalkulationImage = Convert.ToString(System.IO.Path.GetFullPath("images/Kalkulieren.png"));
 
-        private string uebersichtImage = Convert.ToString(System.IO.Path.GetFullPath("images/Uebersicht.png"));
+        private string uebersichtImage = Convert.ToString(System.IO.Path.GetFullPath("images/Uebersicht.png"));*/
 
         public Produktkatalog meinKatalog { get; set; }
 
@@ -42,14 +42,24 @@ namespace tfmarkt
         public MainWindow()
         {
             InitializeComponent();
-            lblVerwaltung.Background = new ImageBrush(new BitmapImage(new Uri(this.verwaltungImage)));
+
+            this.meinKatalog = new Produktkatalog(new XmlDatei());
+
+
+
+
+
+            /* Testdaten */
+
+
+            /*lblVerwaltung.Background = new ImageBrush(new BitmapImage(new Uri(this.verwaltungImage)));
             lblUebersicht.Background = new ImageBrush(new BitmapImage(new Uri(this.uebersichtImage)));
-            lblKalkulation.Background = new ImageBrush(new BitmapImage(new Uri(this.kalkulationImage)));
+            lblKalkulation.Background = new ImageBrush(new BitmapImage(new Uri(this.kalkulationImage)));*/
 
             // Produkte TEST
-            this.meinKatalog = new Produktkatalog(new XmlDatei());
+
             //Tapetenrolle t1 = new Tapetenrolle("001", "Raufaser", "Halt Raufaser", 10.3m, 1200, 80, 60);
-            Tapetenrolle t12 = new Tapetenrolle("002", "Raufaser", "Halt Raufaser", 10.3m, 1200, 80, 60);
+            //Tapetenrolle t12 = new Tapetenrolle("002", "Raufaser", "Halt Raufaser", 10.3m, 1200, 80, 60);
             //Fliesenpaket t2 = new Fliesenpaket("003", "Steinfliese", "Halt Steinfliese", 18m, 80, 80, 10);
 
             // Zusatzprodukte TEST
@@ -76,13 +86,13 @@ namespace tfmarkt
             //System.Type t = t4.GetType();
 
             //Boolean type = tp.GetType() == t;
-            XmlDatei xml = new XmlDatei();
+            //XmlDatei xml = new XmlDatei();
 
             //lb1.Text = string.Format("Preis der/des {0} {1:C}\n", tp.produktName(), tp.preis);
-            lb1.AppendText(string.Format("{0}\n", meinKatalog));
-            lb1.AppendText(string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12)));
+            //lb1.AppendText(string.Format("{0}\n", meinKatalog));
+            //lb1.AppendText(string.Format("Hinzufügen neuer Tapete erfolgreich? {0}\n", meinKatalog.addTapete(t12)));
 
-            lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
+            //lb1.AppendText(string.Format("{0}\n", "@" + xml.xmlVerzeichnis + "\\" + xml.dateiTapeten));
             //meinKatalog.datenhandler.sichereProduktkatalog(meinKatalog);
         }
 

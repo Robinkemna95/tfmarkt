@@ -21,8 +21,8 @@ namespace tfmarkt.Kalkulation
     /// </summary>
     public partial class KalkulationWindow : Window
     {
-        public ImageBrush roomIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/RoomIcon.png")))));
-        public ImageBrush addIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/add.png")))));
+        //public ImageBrush roomIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/RoomIcon.png")))));
+        //public ImageBrush addIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/add.png")))));
 
         public Kalkulation kalkulation { get; set; }
         private Produktkatalog katalog;
@@ -32,6 +32,7 @@ namespace tfmarkt.Kalkulation
             InitializeComponent();
             this.kalkulation = kalkulation;
             this.katalog = katalog;
+            /*
             this.roomIcon.Stretch = Stretch.None;
             this.roomIcon.Opacity = 0.5;
             lbRaeume.Background = this.roomIcon;
@@ -41,6 +42,7 @@ namespace tfmarkt.Kalkulation
             this.addIcon.AlignmentY = AlignmentY.Center;
             AddBoden.Background = this.addIcon;
             AddWand.Background = this.addIcon;
+            */
             
         }
 
@@ -79,7 +81,10 @@ namespace tfmarkt.Kalkulation
                 return;
             }
 
-            this.Close();
+            if (MessageBoxResult.OK == MessageBox.Show(this, "Beim Verlassen der Kalkulation gehen die aktuelen Daten verloren", "Warnung!", MessageBoxButton.OKCancel))
+            {
+                this.Close();
+            }
         }
 
         private void Label_HoverIn(object sender, MouseEventArgs e)
@@ -174,7 +179,7 @@ namespace tfmarkt.Kalkulation
             if (lbRaeume.Items.Count > 0)
             {
                 Raum selectedRaum = (Raum)lbRaeume.SelectedItem;
-                if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Raum" + selectedRaum.name + " löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
+                if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Raum \"" + selectedRaum.name + "\" löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
                 {
                     lbRaeume.Items.Remove(selectedRaum);
                     if (!this.kalkulation.loescheRaum(selectedRaum))

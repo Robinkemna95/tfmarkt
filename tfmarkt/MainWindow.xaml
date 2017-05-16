@@ -15,9 +15,21 @@
                 <ColumnDefinition Width="33*"/>
                 <ColumnDefinition Width="33*"/>
             </Grid.ColumnDefinitions>
-            <Label Name="lblVerwaltung" Grid.Column="0" MouseDown="Label_Click" MouseEnter="lbl_MouseEnter_Opacity" MouseLeave="lbl_MouseLeave_Opacity" BorderBrush="White" BorderThickness="0,0,1,0" />
-            <Label Name="lblUebersicht" Grid.Column="1" MouseDown="Label_Click_1" MouseEnter="lbl_MouseEnter_Opacity" MouseLeave="lbl_MouseLeave_Opacity" BorderBrush="White" BorderThickness="0,0,1,0" />
-            <Label Name="lblKalkulation" Grid.Column="2" MouseDown="Label_Click_2" MouseEnter="lbl_MouseEnter_Opacity" MouseLeave="lbl_MouseLeave_Opacity" />
+            <Label Name="lblVerwaltung" Grid.Column="0" MouseDown="Label_Click" MouseEnter="lbl_MouseEnter_Opacity" MouseLeave="lbl_MouseLeave_Opacity" BorderBrush="White" BorderThickness="0,0,1,0">
+                <Label.Background>
+                    <ImageBrush ImageSource="images/Verwaltung.png"/>
+                </Label.Background>
+            </Label>
+            <Label Name="lblUebersicht" Grid.Column="1" MouseDown="Label_Click_1" MouseEnter="lbl_MouseEnter_Opacity" MouseLeave="lbl_MouseLeave_Opacity" BorderBrush="White" BorderThickness="0,0,1,0">
+                <Label.Background>
+                    <ImageBrush ImageSource="images/Uebersicht.png"/>
+                </Label.Background>
+            </Label>
+            <Label Name="lblKalkulation" Grid.Column="2" MouseDown="Label_Click_2" MouseEnter="lbl_MouseEnter_Opacity" MouseLeave="lbl_MouseLeave_Opacity">
+                <Label.Background>
+                    <ImageBrush ImageSource="images/Kalkulieren.png"/>
+                </Label.Background>
+            </Label>
         </Grid>
 
 
