@@ -26,7 +26,9 @@
             <!-- Grid Body -left- -->
 
             <ListBox Name="lbRaeume" SelectionChanged="selectionChanged" BorderBrush="LightSalmon" BorderThickness="4, 0, 4, 4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-
+                <ListBox.Background>
+                    <ImageBrush AlignmentX="Center" AlignmentY="Center" Stretch="None" ImageSource="../images/RoomIcon.png"/>
+                </ListBox.Background>
             </ListBox>
 
 
@@ -63,8 +65,18 @@
                 <Label Name="LabelWaende" FontSize="16" Margin="10,10,-10,-10">Wände (ENTF - zum Löschen):</Label>
                 <Label Name="Böden" FontSize="16" Margin="10,225,-10,-225">Böden (ENTF - zum Löschen):</Label>
 
-                <Button Name="AddBoden" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="10,372,385,10" Click="AddItem" >Boden hinzufügen</Button>
-                <Button Name="AddWand" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="175,372,230,10" Click="AddItem" >Wand hinzufügen</Button>
+                <Button Name="AddBoden" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="10,372,385,10" Click="AddItem" >
+                    <Button.Background>
+                        <ImageBrush AlignmentX="Right" AlignmentY="Center" Stretch="None"  ImageSource="../images/add.png"/>
+                    </Button.Background>
+                    Boden hinzufügen
+                </Button>
+                <Button Name="AddWand" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="175,372,230,10" Click="AddItem" >
+                    <Button.Background>
+                        <ImageBrush AlignmentX="Right" AlignmentY="Center" Stretch="None" ImageSource="../images/add.png"/>
+                    </Button.Background>
+                    Wand hinzufügen
+                </Button>
                 <DataGrid Name="WaendeGrid" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="180" Width="535" IsReadOnly="True" KeyUp="deleteWand"/>
                 <DataGrid Name="BoedenGrid" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Height="100" Width="535" IsReadOnly="True" KeyUp="deleteBoden"/>
             </Grid>
