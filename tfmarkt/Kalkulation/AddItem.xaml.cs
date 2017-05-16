@@ -71,6 +71,11 @@ namespace tfmarkt.Kalkulation
 
         private void createBoden(object sender, RoutedEventArgs e)
         {
+            if(Laenge.Text.Length == 0 || Breite.Text.Length == 0)
+            {
+                MessageBox.Show("Bitte geben Sie Maße für Länge und Breite an.");
+                return;
+            }
             int laenge = Convert.ToInt32(Laenge.Text);
             int breite = Convert.ToInt32(Breite.Text);
             Fliesenpaket fliese = (Fliesenpaket)ComboBoxProdukte.SelectedItem;
@@ -82,6 +87,11 @@ namespace tfmarkt.Kalkulation
 
         private void createWand(object sender, RoutedEventArgs e)
         {
+            if (Laenge.Text.Length == 0 || Breite.Text.Length == 0)
+            {
+                MessageBox.Show("Bitte geben Sie Maße für Länge und Breite an.");
+                return;
+            }
             int laenge = Convert.ToInt32(Laenge.Text);
             int breite = Convert.ToInt32(Breite.Text);
             int anzahl = int.Parse(ComboBoxAnzahl.SelectedItem.ToString());

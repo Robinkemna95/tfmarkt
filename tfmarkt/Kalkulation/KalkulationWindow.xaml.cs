@@ -231,11 +231,15 @@ namespace tfmarkt.Kalkulation
 
         private void deleteWand(object sender, KeyEventArgs e)
         {
+            
             if(e.Key == Key.Delete)
             {
                 if(MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie die ausgewählte Wand löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
                 {
-                    ((Raum)lbRaeume.SelectedItem).loescheWand((Wand)WaendeGrid.SelectedItem);
+                    foreach(Wand wand in WaendeGrid.SelectedItems)
+                    {
+                        ((Raum)lbRaeume.SelectedItem).loescheWand(wand);
+                    }
                     this.updateGrids();
                 }
             }
@@ -247,7 +251,10 @@ namespace tfmarkt.Kalkulation
             {
                 if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Boden löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
                 {
-                    ((Raum)lbRaeume.SelectedItem).loescheBoden((Boden)BoedenGrid.SelectedItem);
+                    foreach(Boden boden in BoedenGrid.SelectedItems)
+                    {
+                        ((Raum)lbRaeume.SelectedItem).loescheBoden(boden);
+                    }
                     this.updateGrids();
                 }   
             }
