@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tfmarkt.Katalog;
 using tfmarkt.Produktklassen;
+using System.Text.RegularExpressions;
 
 namespace tfmarkt.Kalkulation
 {
@@ -43,6 +44,7 @@ namespace tfmarkt.Kalkulation
         {
             List<Fliesenpaket> fliesen = this.katalog.fliesen;
             ComboBoxProdukte.ItemsSource = fliesen;
+            ComboBoxProdukte.SelectedIndex = 1;
             buttonCreateItem.Click += createBoden;
         }
 
@@ -50,6 +52,7 @@ namespace tfmarkt.Kalkulation
         {
             List<Tapetenrolle> tapeten = this.katalog.tapeten;
             ComboBoxProdukte.ItemsSource = tapeten;
+            ComboBoxProdukte.SelectedIndex = 1;
             buttonCreateItem.Click += createWand;
         }
 
@@ -77,6 +80,12 @@ namespace tfmarkt.Kalkulation
             selectedRaum.neueWand(breite, laenge).tapete = tapete;
             ((KalkulationWindow)this.Owner).updateGrids();
             this.Close();
+        }
+
+        private void validateInt(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]{1,8}");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

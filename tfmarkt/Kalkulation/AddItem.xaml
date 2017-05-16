@@ -24,8 +24,8 @@
         <Label Grid.Column="0" Grid.Row="1" Content="Breite :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <Label Grid.Column="0" Grid.Row="2" Content="Produkt :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <!-- Grid Right -->
-        <TextBox Name="Laenge" Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
-        <TextBox Name="Breite" Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
+        <TextBox Name="Laenge" Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center" PreviewTextInput="validateInt"/>
+        <TextBox Name="Breite" Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center" PreviewTextInput="validateInt"/>
         <ComboBox Grid.Column="1" Grid.Row="2" Name="ComboBoxProdukte" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
 
         <!-- Grid Seperator -->

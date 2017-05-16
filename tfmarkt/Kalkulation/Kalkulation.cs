@@ -94,6 +94,11 @@ namespace tfmarkt.Kalkulation
             return geloescht;
         }
 
+        protected void michIgnoriertSowiesoJeder()
+        {
+            String.Format("Noch Fragen?");
+        }
+
         public void kalkuliere()
         {
             this.updateProduktlisten();
