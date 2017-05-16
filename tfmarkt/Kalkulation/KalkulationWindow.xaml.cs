@@ -131,9 +131,30 @@ namespace tfmarkt.Kalkulation
         private void AddItem(object sender, RoutedEventArgs e)
         {
             Button addButton = (Button)sender;
-            AddItem item = new AddItem(addButton.Name);
+            AddItem item = new AddItem(addButton.Name, this.katalog, lbRaeume);
             item.Owner = this;
             item.ShowDialog();
+        }
+
+        private void removeSelectedItem(object sender, RoutedEventArgs e)
+        {
+            if (lbRaeume.Items.Count > 0)
+            {
+                Raum selectedRaum = (Raum)lbRaeume.SelectedItem;
+                if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Raum" + selectedRaum.name + " löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
+                {
+                    lbRaeume.Items.Remove(selectedRaum);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Es gibt keine Räume die gelöscht werden können.");
+            }
+            
         }
     }
 }
