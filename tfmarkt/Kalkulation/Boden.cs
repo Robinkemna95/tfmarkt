@@ -7,7 +7,7 @@ using tfmarkt.Produktklassen;
 
 namespace tfmarkt.Kalkulation
 {
-    class Boden
+    public class Boden
     {
         public int laenge { get; set; }
         public int breite { get; set; }

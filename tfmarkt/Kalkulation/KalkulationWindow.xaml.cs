@@ -24,10 +24,12 @@ namespace tfmarkt.Kalkulation
         public ImageBrush roomIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/RoomIcon.png")))));
         public ImageBrush addIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/add.png")))));
 
+        public Kalkulation kalkulation { get; set; }
         private Produktkatalog katalog;
-        public KalkulationWindow(Produktkatalog katalog)
+        public KalkulationWindow(Produktkatalog katalog, Kalkulation kalkulation)
         {
             InitializeComponent();
+            this.kalkulation = kalkulation;
             this.katalog = katalog;
             this.roomIcon.Stretch = Stretch.None;
             this.roomIcon.Opacity = 0.5;
@@ -95,13 +97,10 @@ namespace tfmarkt.Kalkulation
             tmp.Foreground = Brushes.Black;
         }
 
-        private void Label_MouseDown_1(object sender, MouseButtonEventArgs e)
+        private void Kalkuliere(object sender, MouseButtonEventArgs e)
         {
-            // Hie wird eine Kalkulation vorbereitet und die Ausgabe formatiert und angezeigt
-            Kalkulation testKalkulation = new Kalkulation(0, katalog);
-            testKalkulation.kalkuliere();
-
-            Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(testKalkulation.ergebnisse);
+            this.kalkulation.kalkuliere();
+            Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(this.kalkulation.ergebnisse);
             ausgabe.Owner = this;
             ausgabe.ausgabeFormatieren();
             ausgabe.ShowDialog();
@@ -130,10 +129,16 @@ namespace tfmarkt.Kalkulation
 
         private void AddItem(object sender, RoutedEventArgs e)
         {
+            if(lbRaeume.Items.Count == 0)
+            {
+                MessageBox.Show("Bitte erstellen Sie erst einen Raum.");
+                return;
+            }
             Button addButton = (Button)sender;
             AddItem item = new AddItem(addButton.Name, this.katalog, lbRaeume);
             item.Owner = this;
             item.ShowDialog();
+            this.updateGrids();
         }
 
         private void removeSelectedItem(object sender, RoutedEventArgs e)
@@ -154,7 +159,26 @@ namespace tfmarkt.Kalkulation
             {
                 MessageBox.Show("Es gibt keine Räume die gelöscht werden können.");
             }
-            
+        }
+
+        private void selectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.updateGrids();
+        }
+
+        public void updateGrids()
+        {
+            BoedenGrid.ItemsSource = null;
+            WaendeGrid.ItemsSource = null;
+            BoedenGrid.ItemsSource = ((Raum)lbRaeume.SelectedItem).boeden;
+            WaendeGrid.ItemsSource = ((Raum)lbRaeume.SelectedItem).waende;
+
+            BoedenGrid.UpdateLayout();
+        }
+
+        private void deleteKalkulation(object sender, EventArgs e)
+        {
+            ((MainWindow)this.Owner).resetKalkulation();
         }
     }
 }
