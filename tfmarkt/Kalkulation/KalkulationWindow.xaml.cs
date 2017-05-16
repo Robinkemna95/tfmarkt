@@ -141,7 +141,7 @@ namespace tfmarkt.Kalkulation
             this.updateGrids();
         }
 
-        private void removeSelectedItem(object sender, RoutedEventArgs e)
+        private void removeSelectedItem(object sender, MouseButtonEventArgs e)
         {
             if (lbRaeume.Items.Count > 0)
             {
@@ -149,6 +149,10 @@ namespace tfmarkt.Kalkulation
                 if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Raum" + selectedRaum.name + " löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
                 {
                     lbRaeume.Items.Remove(selectedRaum);
+                    if (!this.kalkulation.loescheRaum(selectedRaum))
+                    {
+                        MessageBox.Show("Es ist ein unerwarteter Fehler aufgetreten und der Raum konnte nicht richtig gelöscht werden. (Dieser Fehler sollte niemals auftreten   (╯°□°）╯︵ ┻━┻     )");
+                    }
                 }
                 else
                 {
@@ -168,12 +172,18 @@ namespace tfmarkt.Kalkulation
 
         public void updateGrids()
         {
-            BoedenGrid.ItemsSource = null;
-            WaendeGrid.ItemsSource = null;
-            BoedenGrid.ItemsSource = ((Raum)lbRaeume.SelectedItem).boeden;
-            WaendeGrid.ItemsSource = ((Raum)lbRaeume.SelectedItem).waende;
-
-            BoedenGrid.UpdateLayout();
+            if(lbRaeume.Items.Count > 0)
+            {
+                BoedenGrid.ItemsSource = null;
+                WaendeGrid.ItemsSource = null;
+                BoedenGrid.ItemsSource = ((Raum)lbRaeume.SelectedItem).boeden;
+                WaendeGrid.ItemsSource = ((Raum)lbRaeume.SelectedItem).waende;
+            }
+            else
+            {
+                BoedenGrid.ItemsSource = null;
+                WaendeGrid.ItemsSource = null;
+            }
         }
 
         private void deleteKalkulation(object sender, EventArgs e)

@@ -85,18 +85,12 @@ namespace tfmarkt.Kalkulation
         {
             bool geloescht = false;
 
-            try
+            if (this.raeume.Contains(raum))
             {
-                if (this.raeume.Contains(raum))
-                {
-                    this.raeume.Remove(raum);
-                    geloescht = true;
-                }
+                this.raeume.Remove(raum);
+                geloescht = true;
             }
-            catch (Exception)
-            {
-
-            }
+            
             return geloescht;
         }
 
