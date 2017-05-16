@@ -37,7 +37,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Content="+" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22" MouseDown="addNewRoom"/>
-                <Label Grid.Column="1" Content="-" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
+                <Label Grid.Column="1" Content="-" MouseDown="removeSelectedItem" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
             </Grid>
 
             <Label Content="Kalkulation" Grid.Row="3" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />

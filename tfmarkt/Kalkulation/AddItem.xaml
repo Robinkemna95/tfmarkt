@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         mc:Ignorable="d"
-        Title="AddItem" Height="300" Width="300" WindowStyle="None" WindowStartupLocation="CenterOwner">
+        Title="AddItem" Height="300" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid Name="AddItemGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="70*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!-- Grid Left -->
-        
+        <Label Content="Länge :" Margin="0,34,0,-34" HorizontalContentAlignment="Right"/>
+        <Label Content="Breite :" Margin="0,10,0,-10" HorizontalContentAlignment="Right"/>
         <!-- Grid Right -->
-        
+        <TextBox Grid.Column="1" TextWrapping="NoWrap" Margin="10,10,10,242"/>
+        <TextBox Grid.Column="1" TextWrapping="NoWrap" Margin="10,38,10,214"/>
+        <ComboBox Name="ComboBoxProdukte" Grid.Column="1" Margin="10,68,10,179"></ComboBox>
+
     </Grid>
 </Window>

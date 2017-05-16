@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tfmarkt.Katalog;
+using tfmarkt.Produktklassen;
 
 namespace tfmarkt.Kalkulation
 {
@@ -19,21 +21,29 @@ namespace tfmarkt.Kalkulation
     /// </summary>
     public partial class AddItem : Window
     {
-        public AddItem(string type)
+        public Produktkatalog katalog { get; set; }
+        public AddItem(string type, Produktkatalog katalog, ListBox aktuelleListe)
         {
-            Raum selectedRaum = (Raum)((ListBox)this.Owner.FindName("lbRaeume")).SelectedItem;
+            InitializeComponent();
+            this.katalog = katalog;
+            Raum selectedRaum = (Raum)aktuelleListe.SelectedItem;
             switch (type)
             {
                 case "AddBoden":
+                    this.initBodenForm();
                     break;
                 case "AddWand":
+                    this.initWandForm();
                     break;
             }
         }
 
         private void initBodenForm()
         {
+            List<Fliesenpaket> fliesen = this.katalog.fliesen;
 
+            ComboBox fliesenListe= new ComboBox(); 
+            ComboBoxProdukte.ItemsSource = fliesen;
         }
 
         private void initWandForm()
