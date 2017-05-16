@@ -1,11 +1,12 @@
 ﻿<Window x:Class="tfmarkt.Verwaltung.DetailsProduktuebersicht"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DetailsProduktuebersicht" Height="300" Width="300" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" WindowState="Normal" BorderBrush="Black" BorderThickness="1">
+        Title="DetailsProduktuebersicht" Height="320" Width="300" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" WindowState="Normal" BorderBrush="Black" BorderThickness="1">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80*"/>
+                <RowDefinition Height="5"/>
                 <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
 
@@ -24,28 +25,31 @@
                     <ColumnDefinition Width="45*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Artikelnummer" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Content="Titel" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Content="Preis (€)" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Content="Beschreibung" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Name="lbVar1" Content="Variabel 1" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Name="lbVar2" Content="Variabel 2" Grid.Row="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <Label Name="lbVar3" Content="Variabel 3" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                <TextBox Name="tbArtikelnummer" IsReadOnly="True" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <TextBox Name="tbTitel" IsReadOnly="True" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <TextBox Name="tbPreis" IsReadOnly="True" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <TextBox Name="tbBeschreibung" IsReadOnly="True" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <TextBox Name="tbVar1" IsReadOnly="True" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <TextBox Name="tbVar2" IsReadOnly="True" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <TextBox Name="tbVar3" IsReadOnly="True" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" />
+                <Label Content="Artikelnummer :" Grid.Row="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <Label Content="Titel :" Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <Label Content="Preis (€) :" Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <Label Content="Beschreibung :" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <Label Name="lbVar1" Content="Variabel 1" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <Label Name="lbVar2" Content="Variabel 2" Grid.Row="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <Label Name="lbVar3" Content="Variabel 3" Grid.Row="6" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <!--<TextBox Name="tbArtikelnummer" IsReadOnly="True" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" />-->
+                <Label Name="tbArtikelnummer" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
+                <Label Name="tbTitel" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
+                <Label Name="tbPreis" Grid.Row="2" Grid.Column="1"  VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
+                <Label Name="tbBeschreibung" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
+                <Label Name="tbVar1" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
+                <Label Name="tbVar2" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
+                <Label Name="tbVar3" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" Margin="5" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Bold" />
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Separator Grid.Row="1" Grid.ColumnSpan="2" />
+
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="btnOk" Content="Ok" Grid.Column="0" HorizontalAlignment="Center" Margin="110,10,110,10" VerticalAlignment="Center" Width="74" Click="btnOk_Click" Grid.ColumnSpan="2"/>
+                <Button Grid.Column="1" Name="btnOk" Content="Schließen" Margin="5" Click="btnOk_Click" Grid.ColumnSpan="2"/>
             </Grid>
         </Grid>
     </Grid>

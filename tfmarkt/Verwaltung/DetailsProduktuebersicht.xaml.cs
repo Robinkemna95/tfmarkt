@@ -49,43 +49,43 @@ namespace tfmarkt.Verwaltung
 
             if (this.produktTyp == typeof(Tapetenrolle))
             {
-                this.lbVar1.Content = "Laenge (cm)";
-                this.lbVar2.Content = "Breite (cm)";
-                this.lbVar3.Content = "Rapport (cm)";
+                this.lbVar1.Content = "Laenge (cm) :";
+                this.lbVar2.Content = "Breite (cm) :";
+                this.lbVar3.Content = "Rapport (cm) :";
             }
             else if (this.produktTyp == typeof(Fliesenpaket))
             {
 
-                this.lbVar1.Content = "Laenge (cm)";
-                this.lbVar2.Content = "Breite (cm)";
-                this.lbVar3.Content = "Anzahl (stk)";
+                this.lbVar1.Content = "Laenge (cm) :";
+                this.lbVar2.Content = "Breite (cm) :";
+                this.lbVar3.Content = "Anzahl (stk) :";
             }
             else if (this.produktTyp == typeof(Tapetenkleister))
             {
                 this.tbVar3.Visibility = Visibility.Hidden;
 
-                this.lbVar1.Content = "Fläche (m²)";
-                this.lbVar2.Content = "Gewicht (g)";
+                this.lbVar1.Content = "Fläche (m²) :";
+                this.lbVar2.Content = "Gewicht (g) :";
                 this.lbVar3.Visibility = Visibility.Hidden;
             }
             else if (this.produktTyp == typeof(Fliesenkleber) || this.produktTyp == typeof(Fugenmoertel))
             {
-                this.lbVar1.Content = "min Fläche (m²)";
-                this.lbVar2.Content = "max Fläche (m²)";
-                this.lbVar3.Content = "Gewicht (g)";
+                this.lbVar1.Content = "min Fläche (m²) :";
+                this.lbVar2.Content = "max Fläche (m²) :";
+                this.lbVar3.Content = "Gewicht (g) :";
             }
         }
 
         // Herstellung der Standardansicht für die Detailansicht
         private void standardAnsicht()
         {
-            this.tbArtikelnummer.Text = "";
-            this.tbTitel.Text = "";
-            this.tbPreis.Text = "";
-            this.tbBeschreibung.Text = "";
-            this.tbVar1.Text = "";
-            this.tbVar2.Text = "";
-            this.tbVar3.Text = "";
+            this.tbArtikelnummer.Content = "";
+            this.tbTitel.Content = "";
+            this.tbPreis.Content = "";
+            this.tbBeschreibung.Content = "";
+            this.tbVar1.Content = "";
+            this.tbVar2.Content = "";
+            this.tbVar3.Content = "";
 
             this.tbVar3.Visibility = Visibility.Visible;
 
@@ -97,33 +97,33 @@ namespace tfmarkt.Verwaltung
         {
             dynamic d = produkt;
 
-            this.tbArtikelnummer.Text = d.artikelnummer;
-            this.tbTitel.Text = d.titel;
-            this.tbPreis.Text = "" + d.preis;
-            this.tbBeschreibung.Text = d.beschreibung;
+            this.tbArtikelnummer.Content = d.artikelnummer;
+            this.tbTitel.Content = d.titel;
+            this.tbPreis.Content = "" + d.preis;
+            this.tbBeschreibung.Content = d.beschreibung;
 
             if (produkt.GetType() == typeof(Tapetenrolle) || produkt.GetType() == typeof(Fliesenpaket))
             {
-                this.tbVar1.Text = "" + d.laenge;
-                this.tbVar2.Text = "" + d.breite;
+                this.tbVar1.Content = "" + d.laenge;
+                this.tbVar2.Content = "" + d.breite;
 
                 if (produkt.GetType() == typeof(Tapetenrolle))
-                    this.tbVar3.Text = "" + d.rapport;
+                    this.tbVar3.Content = "" + d.rapport;
                 else
-                    this.tbVar3.Text = "" + d.anzahl;
+                    this.tbVar3.Content = "" + d.anzahl;
             }
             else
             {
                 if (produkt.GetType() == typeof(Tapetenkleister))
                 {
-                    this.tbVar1.Text = "" + d.flaeche;
-                    this.tbVar2.Text = "" + d.gewicht;
+                    this.tbVar1.Content = "" + d.flaeche;
+                    this.tbVar2.Content = "" + d.gewicht;
                 }
                 else
                 {
-                    this.tbVar1.Text = "" + d.minFlaeche;
-                    this.tbVar2.Text = "" + d.maxFlaeche;
-                    this.tbVar3.Text = "" + d.gewicht;
+                    this.tbVar1.Content = "" + d.minFlaeche;
+                    this.tbVar2.Content = "" + d.maxFlaeche;
+                    this.tbVar3.Content = "" + d.gewicht;
                 }
             }
         }

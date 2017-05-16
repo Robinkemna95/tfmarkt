@@ -40,7 +40,8 @@
                     <!--<Button Name="btnZusatzprodukte" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" OverridesDefaultStyle="True" BorderThickness="0,1" />-->
                     <Label Name="btnZusatzprodukte" Content="Zusatzprodukte" BorderThickness="0,1,0,1" BorderBrush="Black" MouseEnter="label_highlightMouseEnter" MouseLeave="label_highlightMouseLeave" MouseDown="btZusatzprodukte_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                     <Label Name="lbZusatzprodukt" BorderThickness="0,1,0,1" BorderBrush="Black" Grid.Column="1" Background="white" />
-                </Grid>                
+                </Grid>
+                
             </ListBox>
             <Label Content="Schließen" Grid.Row="1" MouseEnter="label_highlightMouseEnter" MouseLeave="label_highlightMouseLeave" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
