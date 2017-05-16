@@ -51,5 +51,10 @@ namespace tfmarkt.Produktklassen
 
             return kopie;
         }
+
+        public override string ToString()
+        {
+            return base.titel;
+        }
     }
 }

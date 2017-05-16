@@ -21,8 +21,8 @@ namespace tfmarkt.Kalkulation
     /// </summary>
     public partial class KalkulationWindow : Window
     {
-        public ImageBrush roomIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("../../images/RoomIcon.png")))));
-        public ImageBrush addIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("../../images/add.png")))));
+        public ImageBrush roomIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/RoomIcon.png")))));
+        public ImageBrush addIcon = new ImageBrush(new BitmapImage(new Uri(Convert.ToString(System.IO.Path.GetFullPath("images/add.png")))));
 
         private Produktkatalog katalog;
         public KalkulationWindow(Produktkatalog katalog)
