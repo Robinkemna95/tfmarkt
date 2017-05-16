@@ -99,6 +99,24 @@ namespace tfmarkt.Kalkulation
 
         private void Kalkuliere(object sender, MouseButtonEventArgs e)
         {
+            if (lbRaeume.Items.Count == 0)
+            {
+                MessageBox.Show(this, "Bitte zuerst mindestens einen Raum anlegen", "Raum anlegen");
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show(this, "Wollen sie Zusatzprodukte mitberechnen lassen?", "Mit Zusatzprodukten", MessageBoxButton.YesNo);
+
+            this.kalkulation.zusatzprodukte.Clear();
+
+            if (result == MessageBoxResult.Yes)
+            {
+                foreach (Zusatzprodukt zusatzprodukt in this.katalog.zusatzprodukte)
+                {
+                    this.kalkulation.zusatzprodukte.Add(zusatzprodukt);
+                }
+            }
+
             this.kalkulation.kalkuliere();
             Ausgabe.Ausgabe ausgabe = new Ausgabe.Ausgabe(this.kalkulation.ergebnisse);
             ausgabe.Owner = this;
