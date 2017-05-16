@@ -1,35 +1,38 @@
-﻿<Window x:Class="tfmarkt.Kalkulation.AddItem"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="tfmarkt.Kalkulation.AddItem"
         mc:Ignorable="d"
         Title="AddItem" Height="200" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
-    <Grid Name="AddItemGrid">
+    <Grid x:Name="AddItemGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="70*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="5"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <!-- Grid Left -->
-        <Label Grid.Column="0" Grid.Row="0" Content="Länge :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Label Grid.Column="0" Grid.Row="1" Content="Breite :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="0" Content="Länge (cm) :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="Breite (cm) :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <Label Grid.Column="0" Grid.Row="2" Content="Produkt :" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label Name="Anzahl" Content="Anzahl :" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
         <!-- Grid Right -->
-        <TextBox Name="Laenge" Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
-        <TextBox Name="Breite" Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Column="1" Grid.Row="2" Name="ComboBoxProdukte" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
-
+        <TextBox x:Name="Laenge" Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="Breite" Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
+        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="ComboBoxProdukte" Margin="5,5,5,5" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="ComboBoxAnzahl" Grid.Column="1" Grid.Row="3" Margin="5"/>
         <!-- Grid Seperator -->
-        <Separator Grid.ColumnSpan="2" Grid.Row="3"/>
+        <Separator Grid.ColumnSpan="2" Grid.Row="4"/>
 
         <!-- Grid Buttonbox -->
         <Grid Grid.Column="1" Grid.Row="5">
@@ -37,8 +40,9 @@
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            <Button Click="closeWindow" Grid.Column="0" Margin="5,5,5,5">Abbrechen</Button>
-            <Button Name="buttonCreateItem" Grid.Column="1" Margin="5,5,5,5">Anlegen</Button>
+            <Button Click="closeWindow" Grid.Column="0" Margin="5,5,5,5" Content="Abbrechen"/>
+            <Button x:Name="buttonCreateItem" Grid.Column="1" Margin="5,5,5,5" Content="Anlegen"/>
         </Grid>
+
     </Grid>
 </Window>

@@ -23,6 +23,9 @@ namespace tfmarkt.Kalkulation
     {
         public Produktkatalog katalog { get; set; }
         private Raum selectedRaum;
+
+        private int[] ANZAHLELEMENTE = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
         public AddItem(string type, Produktkatalog katalog, ListBox aktuelleListe)
         {
             InitializeComponent();
@@ -41,6 +44,9 @@ namespace tfmarkt.Kalkulation
 
         private void initBodenForm()
         {
+            this.Anzahl.Visibility = Visibility.Hidden;
+            this.ComboBoxAnzahl.Visibility = Visibility.Hidden;
+
             List<Fliesenpaket> fliesen = this.katalog.fliesen;
             ComboBoxProdukte.ItemsSource = fliesen;
             buttonCreateItem.Click += createBoden;
@@ -48,6 +54,8 @@ namespace tfmarkt.Kalkulation
 
         private void initWandForm()
         {
+            ComboBoxAnzahl.ItemsSource = ANZAHLELEMENTE;
+            ComboBoxAnzahl.SelectedIndex = 0;
             List<Tapetenrolle> tapeten = this.katalog.tapeten;
             ComboBoxProdukte.ItemsSource = tapeten;
             buttonCreateItem.Click += createWand;
@@ -65,16 +73,23 @@ namespace tfmarkt.Kalkulation
             Fliesenpaket fliese = (Fliesenpaket)ComboBoxProdukte.SelectedItem;
 
             selectedRaum.neuerBoden(breite, laenge).fliesen = fliese;
-            
+
             this.Close();
         }
+
         private void createWand(object sender, RoutedEventArgs e)
         {
             int laenge = Convert.ToInt32(Laenge.Text);
             int breite = Convert.ToInt32(Breite.Text);
-            Tapetenrolle tapete = (Tapetenrolle)ComboBoxProdukte.SelectedItem;
+            int anzahl = int.Parse(ComboBoxAnzahl.SelectedItem.ToString());
 
-            selectedRaum.neueWand(breite, laenge).tapete = tapete;
+            for (int i = 0; i < anzahl; i++)
+            {           
+                Tapetenrolle tapete = (Tapetenrolle)ComboBoxProdukte.SelectedItem;
+
+                selectedRaum.neueWand(breite, laenge).tapete = tapete;
+            }
+
             ((KalkulationWindow)this.Owner).updateGrids();
             this.Close();
         }
