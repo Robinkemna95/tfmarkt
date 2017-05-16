@@ -36,6 +36,12 @@ namespace tfmarkt.Kalkulation
             Raum neuerRaum = null;
             if (RaumnameInput.Text != "Raumname")
             {
+                if(RaumnameInput.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Bitte geben Sie einen Namen an.");
+                    return;
+                }
+                
                 neuerRaum = new Raum(RaumnameInput.Text);
                 //lbRaeume.Items.Add
             }
