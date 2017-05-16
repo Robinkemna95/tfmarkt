@@ -26,6 +26,7 @@ namespace tfmarkt.Kalkulation
 
         public Kalkulation kalkulation { get; set; }
         private Produktkatalog katalog;
+        
         public KalkulationWindow(Produktkatalog katalog, Kalkulation kalkulation)
         {
             InitializeComponent();
@@ -111,13 +112,24 @@ namespace tfmarkt.Kalkulation
 
             MessageBoxResult result = MessageBox.Show(this, "Wollen sie Zusatzprodukte mitberechnen lassen?", "Mit Zusatzprodukten", MessageBoxButton.YesNo);
 
+            this.kalkulation.kalkuliere();
             this.kalkulation.zusatzprodukte.Clear();
 
             if (result == MessageBoxResult.Yes)
             {
                 foreach (Zusatzprodukt zusatzprodukt in this.katalog.zusatzprodukte)
                 {
-                    this.kalkulation.zusatzprodukte.Add(zusatzprodukt);
+                    if(zusatzprodukt.GetType() ==  typeof(Tapetenkleister))
+                    {
+                        if (this.kalkulation.produktlisteTapetenrollen.Count > 0)
+                        {
+                            this.kalkulation.zusatzprodukte.Add(zusatzprodukt);
+                        }
+                    }
+                    else if (this.kalkulation.produktlisteFliesenpakete.Count > 0)
+                    {
+                        this.kalkulation.zusatzprodukte.Add(zusatzprodukt);
+                    }
                 }
             }
 
