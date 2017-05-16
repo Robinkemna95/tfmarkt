@@ -131,9 +131,9 @@ namespace tfmarkt.Verwaltung
             foreach (Produkt p in this.letzteListe)
             {
                 GridProdukt tmp = new GridProdukt(p.GetType());
-                tmp.artikelnummer = p.artikelnummer;
-                tmp.titel = p.titel;
-                tmp.preis = p.preis;
+                tmp.Artikelnummer = p.artikelnummer;
+                tmp.Titel = p.titel;
+                tmp.Preis = p.preis;
 
                 anzeigendeProdukte.Add(tmp);
             }
@@ -190,7 +190,7 @@ namespace tfmarkt.Verwaltung
             if (auswahl != null)
             {
                 //MessageBox.Show(this, auswahl.ToString());
-                produkt = this.meinKatalog.getProdukt(auswahl.artikelnummer, false);
+                produkt = this.meinKatalog.getProdukt(auswahl.Artikelnummer, false);
 
                 //d = new Details(produkt.GetType(), Details.Bearbeitung.istBearbeitung);
                 //d.Owner = this;
@@ -224,7 +224,7 @@ namespace tfmarkt.Verwaltung
             if (auswahl != null)
             {
                 //MessageBox.Show(this, auswahl.ToString());
-                produkt = this.meinKatalog.getProdukt(auswahl.artikelnummer, false);
+                produkt = this.meinKatalog.getProdukt(auswahl.Artikelnummer, false);
 
                 if (!(MessageBox.Show(this, String.Format("Wollen Sie das Produkt \"{0}\" wirklich löschen?", produkt.titel), produkt.GetType().Name + ": Produkt löschen", MessageBoxButton.OKCancel) == MessageBoxResult.OK))
                 {
@@ -299,17 +299,17 @@ namespace tfmarkt.Verwaltung
     // Klasse die nur dazu dient, die Anzeige für das DataGrid bereitzustellen
     internal class GridProdukt : ObservableCollection<Produkt>
     {
-        public string produkt { get; set; }
-        public string artikelnummer { get; set; }
-        public string titel { get; set; }
-        public decimal preis { get; set; }
+        public string Produkt { get; set; }
+        public string Artikelnummer { get; set; }
+        public string Titel { get; set; }
+        public decimal Preis { get; set; }
 
         private Type type;
 
         public GridProdukt(Type type)
         {
             this.type = type;
-            this.produkt = umlauteAnpassen(type.Name);
+            this.Produkt = umlauteAnpassen(type.Name);
         }
 
         private string umlauteAnpassen(string name)
@@ -326,7 +326,7 @@ namespace tfmarkt.Verwaltung
 
         public override string ToString()
         {
-            return String.Format("Hallo ich bin {0} und vom Typ {1}", this.titel, this.type);
+            return String.Format("Hallo ich bin {0} und vom Typ {1}", this.Titel, this.type);
         }
     }
 }

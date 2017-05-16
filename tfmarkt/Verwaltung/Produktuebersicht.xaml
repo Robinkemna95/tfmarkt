@@ -1,7 +1,7 @@
 ﻿<Window x:Class="tfmarkt.Verwaltung.Produktuebersicht"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Produktübersicht" Height="640" Width="800" MinWidth="570" MinHeight="280" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
+        Title="Produktübersicht" Height="640" Width="800" MinWidth="570" MinHeight="280" WindowStyle="ToolWindow" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
@@ -38,8 +38,8 @@
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
                     <!--<Button Name="btnZusatzprodukte" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btZusatzprodukte_Click" Content="Zusatzprodukte" Height="70" Width="{Binding ActualWidth, ElementName=lbProdukte, Mode=OneWay}" BorderBrush="Black" OverridesDefaultStyle="True" BorderThickness="0,1" />-->
-                    <Label Name="btnZusatzprodukte" BorderThickness="0,1,0,0" BorderBrush="Black" MouseEnter="label_highlightMouseEnter" MouseLeave="label_highlightMouseLeave" Content="Zusatzprodukte" MouseDown="btZusatzprodukte_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Name="lbZusatzprodukt" BorderThickness="0,1,0,0" BorderBrush="Black" Grid.Column="1" Background="white" />
+                    <Label Name="btnZusatzprodukte" BorderThickness="0,1,0,1" BorderBrush="Black" MouseEnter="label_highlightMouseEnter" MouseLeave="label_highlightMouseLeave" Content="Zusatzprodukte" MouseDown="btZusatzprodukte_Click" Height="70" Foreground="Black" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Name="lbZusatzprodukt" BorderThickness="0,1,0,1" BorderBrush="Black" Grid.Column="1" Background="white" />
                 </Grid>
             </ListBox>
             <Label Content="Schließen" Grid.Row="1" MouseDown="Label_MouseDown" MouseEnter="label_highlightMouseEnter" MouseLeave="label_highlightMouseLeave" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
