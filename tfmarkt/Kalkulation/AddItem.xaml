@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="tfmarkt.Kalkulation.AddItem"
         mc:Ignorable="d"
-        Title="AddItem" Height="200" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        Title="AddItem" Height="220" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid x:Name="AddItemGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"/>
