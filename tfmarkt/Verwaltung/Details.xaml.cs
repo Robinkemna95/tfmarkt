@@ -264,15 +264,15 @@ namespace tfmarkt.Verwaltung
                 }
                 else if (this.produktTyp == typeof(Tapetenkleister))
                 {
-                    produktHinzugefuegt = this.meinKatalog.addZusatzprodukt(new Tapetenkleister(artikelnummer, titel, beschreibung, preis, tbVar1, tbVar2, false));
+                    produktHinzugefuegt = this.meinKatalog.addZusatzprodukt(new Tapetenkleister(artikelnummer, titel, beschreibung, preis, tbVar2, tbVar1, false));
                 }
                 else if (this.produktTyp == typeof(Fliesenkleber))
                 {
-                    produktHinzugefuegt = this.meinKatalog.addZusatzprodukt(new Fliesenkleber(artikelnummer, titel, beschreibung, preis, tbVar1, tbVar2, tbVar3, false));
+                    produktHinzugefuegt = this.meinKatalog.addZusatzprodukt(new Fliesenkleber(artikelnummer, titel, beschreibung, preis, tbVar3, tbVar1, tbVar2, false));
                 }
                 else if (this.produktTyp == typeof(Fugenmoertel))
                 {
-                    produktHinzugefuegt = this.meinKatalog.addZusatzprodukt(new Fugenmoertel(artikelnummer, titel, beschreibung, preis, tbVar1, tbVar2, tbVar3, false));
+                    produktHinzugefuegt = this.meinKatalog.addZusatzprodukt(new Fugenmoertel(artikelnummer, titel, beschreibung, preis, tbVar3, tbVar1, tbVar2, false));
                 }
 
                 if (produktHinzugefuegt)

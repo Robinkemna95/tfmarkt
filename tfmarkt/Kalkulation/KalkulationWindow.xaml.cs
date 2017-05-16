@@ -163,6 +163,12 @@ namespace tfmarkt.Kalkulation
                 MessageBox.Show("Bitte erstellen Sie erst einen Raum.");
                 return;
             }
+
+            if(lbRaeume.SelectedItem == null){
+                MessageBox.Show("Bitte zuerst einen Raum auswählen.");
+                return;
+            }
+
             Button addButton = (Button)sender;
             AddItem item = new AddItem(addButton.Name, this.katalog, lbRaeume);
             item.Owner = this;
