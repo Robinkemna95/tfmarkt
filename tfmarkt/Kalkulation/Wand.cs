@@ -7,7 +7,7 @@ using tfmarkt.Produktklassen;
 
 namespace tfmarkt.Kalkulation
 {
-    class Wand
+    public class Wand
     {
         public int laenge { get; set; }
         public int breite { get; set; }

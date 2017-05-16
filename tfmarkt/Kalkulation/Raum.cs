@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tfmarkt.Kalkulation
 {
-    class Raum
+    public class Raum
     {
         public List<Boden> boeden { get; set; }
         public List<Wand> waende { get; set; }

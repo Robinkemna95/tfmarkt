@@ -47,6 +47,7 @@ namespace tfmarkt.Kalkulation
             if (neuerRaum != null)
             {
                 ((ListBox)this.parentWindow.FindName("lbRaeume")).Items.Add(neuerRaum);
+                this.parentWindow.kalkulation.addRaum(neuerRaum);
             }
             
             this.Close();

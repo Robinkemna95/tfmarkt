@@ -9,7 +9,7 @@ using tfmarkt.Katalog;
 
 namespace tfmarkt.Kalkulation
 {
-    class Kalkulation
+    public class Kalkulation
     {
         public int flaecheTapeten { get; set; }
         public int flaecheFliesen { get; set; }
@@ -20,7 +20,7 @@ namespace tfmarkt.Kalkulation
         public List<Ergebnis> ergebnisse { get; set; }
         public Produktkatalog produktkatalog { get; set; }
 
-        public Kalkulation(int anzahlRaeume = 1, Produktkatalog produktkatalog = null)
+        public Kalkulation(Produktkatalog produktkatalog = null)
         {
             this.produktlisteFliesenpakete = new Dictionary<string, int>();
             this.produktlisteTapetenrollen = new Dictionary<string, int>();
@@ -300,6 +300,5 @@ namespace tfmarkt.Kalkulation
                 this.ergebnisse.Add(ergebnis);
             }
         }
-
     }
 }

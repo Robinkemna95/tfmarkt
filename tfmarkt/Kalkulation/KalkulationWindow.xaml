@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         mc:Ignorable="d"
-        Title="Kalkulation" Height="500" Width="700" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+        Title="Kalkulation" Height="500" Width="700" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="deleteKalkulation">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -40,7 +40,7 @@
                 <Label Grid.Column="1" Content="-" MouseDown="removeSelectedItem" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
             </Grid>
 
-            <Label Content="Kalkulation" Grid.Row="3" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Kalkulation" Grid.Row="3" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Kalkuliere" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
             <Label Content="Schließen" Grid.Row="4" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
@@ -65,8 +65,8 @@
 
                 <Button Name="AddBoden" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="10,372,385,10" Click="AddItem" >Boden hinzufügen</Button>
                 <Button Name="AddWand" BorderThickness="2" BorderBrush="#FFC1C1C1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Margin="175,372,230,10" Click="AddItem" >Wand hinzufügen</Button>
-                <DataGrid Name="WaendeGrid" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="180" Width="535" IsReadOnly="True"/>
-                <DataGrid Name="BoedenGrid" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Height="100" Width="535" IsReadOnly="True"/>
+                <DataGrid Name="WaendeGrid" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="180" Width="535" IsReadOnly="True" />
+                <DataGrid Name="BoedenGrid" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Height="100" Width="535" IsReadOnly="True" />
             </Grid>
         </Grid>
         <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>

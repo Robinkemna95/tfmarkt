@@ -22,11 +22,12 @@ namespace tfmarkt.Kalkulation
     public partial class AddItem : Window
     {
         public Produktkatalog katalog { get; set; }
+        private Raum selectedRaum;
         public AddItem(string type, Produktkatalog katalog, ListBox aktuelleListe)
         {
             InitializeComponent();
             this.katalog = katalog;
-            Raum selectedRaum = (Raum)aktuelleListe.SelectedItem;
+            this.selectedRaum = (Raum)aktuelleListe.SelectedItem;
             switch (type)
             {
                 case "AddBoden":
@@ -41,14 +42,41 @@ namespace tfmarkt.Kalkulation
         private void initBodenForm()
         {
             List<Fliesenpaket> fliesen = this.katalog.fliesen;
-
-            ComboBox fliesenListe= new ComboBox(); 
             ComboBoxProdukte.ItemsSource = fliesen;
+            buttonCreateItem.Click += createBoden;
         }
 
         private void initWandForm()
         {
+            List<Tapetenrolle> tapeten = this.katalog.tapeten;
+            ComboBoxProdukte.ItemsSource = tapeten;
+            buttonCreateItem.Click += createWand;
+        }
 
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void createBoden(object sender, RoutedEventArgs e)
+        {
+            int laenge = Convert.ToInt32(Laenge.Text);
+            int breite = Convert.ToInt32(Breite.Text);
+            Fliesenpaket fliese = (Fliesenpaket)ComboBoxProdukte.SelectedItem;
+
+            selectedRaum.neuerBoden(breite, laenge).fliesen = fliese;
+            
+            this.Close();
+        }
+        private void createWand(object sender, RoutedEventArgs e)
+        {
+            int laenge = Convert.ToInt32(Laenge.Text);
+            int breite = Convert.ToInt32(Breite.Text);
+            Tapetenrolle tapete = (Tapetenrolle)ComboBoxProdukte.SelectedItem;
+
+            selectedRaum.neueWand(breite, laenge).tapete = tapete;
+            ((KalkulationWindow)this.Owner).updateGrids();
+            this.Close();
         }
     }
 }

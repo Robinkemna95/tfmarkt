@@ -27,6 +27,8 @@ namespace tfmarkt
     public partial class MainWindow : Window
     {
 
+        private Kalkulation.Kalkulation kalkulation = null;
+        
         private string verwaltungImage = Convert.ToString(System.IO.Path.GetFullPath("images/Verwaltung.png"));
 
         private string kalkulationImage = Convert.ToString(System.IO.Path.GetFullPath("images/Kalkulieren.png"));
@@ -152,7 +154,13 @@ namespace tfmarkt
                 return;
             }
 
-            KalkulationWindow window = new KalkulationWindow(this.meinKatalog);
+            if (this.kalkulation == null)
+            {
+                this.kalkulation = new Kalkulation.Kalkulation(this.meinKatalog);
+            }
+
+            KalkulationWindow window = new KalkulationWindow(this.meinKatalog, this.kalkulation);
+           
             window.Owner = this;
             window.ShowDialog();
         }
@@ -189,6 +197,11 @@ namespace tfmarkt
                 Grid.SetRowSpan(gridTFMarkt, 2);
             }
             
+        }
+
+        public void resetKalkulation()
+        {
+            this.kalkulation = new Kalkulation.Kalkulation(this.meinKatalog);
         }
     }
 }
