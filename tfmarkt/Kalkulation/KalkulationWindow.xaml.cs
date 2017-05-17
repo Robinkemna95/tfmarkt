@@ -192,7 +192,7 @@ namespace tfmarkt.Kalkulation
             {
                 return;
             }
-            if (lbRaeume.Items.Count > 0)
+            if (lbRaeume.SelectedItem != null && lbRaeume.Items.Count > 0)
             {
                 Raum selectedRaum = (Raum)lbRaeume.SelectedItem;
                 if (MessageBoxResult.Yes == MessageBox.Show(this, "Sind Sie sicher dass Sie den ausgewählten Raum \"" + selectedRaum.name + "\" löschen wollen?", "Achtung!", MessageBoxButton.YesNo))
@@ -210,7 +210,7 @@ namespace tfmarkt.Kalkulation
             }
             else
             {
-                MessageBox.Show("Es gibt keine Räume die gelöscht werden können.");
+                MessageBox.Show("Bitte einen Raum auswählen zum Löschen.");
             }
         }
 
@@ -284,8 +284,14 @@ namespace tfmarkt.Kalkulation
 
         private void deleteAll(object sender, MouseButtonEventArgs e)
         {
-            if (lbRaeume.Items.Count == 0 || e.ChangedButton != MouseButton.Left)
+            if (e.ChangedButton != MouseButton.Left)
             {
+                return;
+            }
+
+            if (lbRaeume.Items.Count == 0)
+            {
+                MessageBox.Show(this, "Es gibt noch keine Räume zum Löschen", "Raum anlegen");
                 return;
             }
 
