@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfmarkt.Kalkulation"
         mc:Ignorable="d"
-        Title="Kalkulation" Height="500" Width="700" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="deleteKalkulation">
+        Title="Kalkulation" Height="500" Width="700" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize" > <!--Closed="deleteKalkulation">-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -15,6 +15,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="6*"/>
                 <RowDefinition Height="60*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
@@ -42,9 +43,11 @@
                 <Label Grid.Column="1" Content="-" MouseDown="removeSelectedItem" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="22"/>
             </Grid>
 
-            <Label Content="Kalkulation" Grid.Row="3" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Kalkuliere" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Alles löschen" Grid.Row="3" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="deleteAll" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            
+            <Label Content="Kalkulation" Grid.Row="4" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Kalkuliere" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
-            <Label Content="Schließen" Grid.Row="4" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Schließen" Grid.Row="5" MouseEnter="Label_HoverIn" MouseLeave="Label_HoverOut" MouseDown="Label_MouseDown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </Grid>
 
         <!-- Grid Body -right- -->
