@@ -32,6 +32,14 @@ namespace tfmarkt.Kalkulation
             InitializeComponent();
             this.kalkulation = kalkulation;
             this.katalog = katalog;
+
+            if (kalkulation.raeume.Count > 0)
+            {
+                foreach (Raum r in kalkulation.raeume)
+	            {
+                    lbRaeume.Items.Add(r);
+	            }
+            }
             /*
             this.roomIcon.Stretch = Stretch.None;
             this.roomIcon.Opacity = 0.5;
@@ -81,10 +89,12 @@ namespace tfmarkt.Kalkulation
                 return;
             }
 
-            if (MessageBoxResult.OK == MessageBox.Show(this, "Beim Verlassen der Kalkulation gehen die aktuelen Daten verloren", "Warnung!", MessageBoxButton.OKCancel))
+            if (this.lbRaeume.Items.Count > 0)
             {
-                this.Close();
+               MessageBox.Show(this, "Ihre Kalkulation bleibt zur weiteren Verarbeitung bestehen.", "Information");
             }
+
+            this.Close();
         }
 
         private void Label_HoverIn(object sender, MouseEventArgs e)
@@ -235,6 +245,7 @@ namespace tfmarkt.Kalkulation
             }
         }
 
+        // DEPRECATED -- Sobald die Kalkulation geöffnet wird, werden alle bereits angelegten Räume angezeigt
         private void deleteKalkulation(object sender, EventArgs e)
         {
             ((MainWindow)this.Owner).resetKalkulation();
@@ -269,6 +280,24 @@ namespace tfmarkt.Kalkulation
                     this.updateGrids();
                 }   
             }
+        }
+
+        private void deleteAll(object sender, MouseButtonEventArgs e)
+        {
+            if (lbRaeume.Items.Count == 0 || e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+
+            if (MessageBoxResult.Yes != MessageBox.Show(this, "Wollen Sie wirklich die gesamte Kalkulation löschen?", "Wirklich löschen", MessageBoxButton.YesNo))
+            {
+                return;
+            }
+
+            this.kalkulation.raeume.Clear();
+            this.lbRaeume.Items.Clear();
+            this.WaendeGrid.Items.Clear();
+            this.BoedenGrid.Items.Clear();
         }
     }
 }
